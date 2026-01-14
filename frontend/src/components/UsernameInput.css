@@ -1,0 +1,61 @@
+.username-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.username-card {
+  background-color: white;
+  border-radius: 16px;
+  padding: 48px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.username-icon {
+  color: #4a90e2;
+  margin-bottom: 20px;
+}
+
+.username-title {
+  font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.username-subtitle {
+  font-size: 16px;
+  color: #7f8c8d;
+  margin-bottom: 24px;
+}
+
+.username-input {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.username-input:focus {
+  border-color: #4a90e2;
+}
+
+.disabled-button {
+  background-color: #ccc;
+  color: #666;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: not-allowed;
+}
