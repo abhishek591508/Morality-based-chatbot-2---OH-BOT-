@@ -111,3 +111,20 @@
   color: #4a90e2;
   margin: 0;
 }
+
+.primary-button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 32px;
+  margin: 5px 3px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  /* display: inline-flex; */
+  /* align-items: center; */
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
+}

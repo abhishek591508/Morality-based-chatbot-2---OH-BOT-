@@ -58,8 +58,8 @@ export const generateExcelReport = async (req, res) => {
         duty: game.moralScores.duty
       });
     });
-
-    // Apply conditional formatting to score columns
+/*
+    // Apply conditional formatting to score columns 
     for (let row = 2; row <= games.length + 1; row++) {
       for (let col = 4; col <= 12; col++) {
         const cell = summarySheet.getRow(row).getCell(col);
@@ -70,26 +70,29 @@ export const generateExcelReport = async (req, res) => {
           cell.fill = {
             type: 'pattern',
             pattern: 'solid',
-            fgColor: { argb: 'FF4CAF50' } // Green
+            // fgColor: { argb: 'FF4CAF50' } // Green
+            fgColor: { argb: 'ffffffff' } // Green
           };
         } else if (value >= 50) {
           cell.fill = {
             type: 'pattern',
             pattern: 'solid',
-            fgColor: { argb: 'FFFFF9C4' } // Yellow
+            // fgColor: { argb: 'FFFFF9C4' } // Yellow
+            fgColor: { argb: 'ffffffff' } // Yellow
           };
         } else {
           cell.fill = {
             type: 'pattern',
             pattern: 'solid',
-            fgColor: { argb: 'FFFFCDD2' } // Red
+            // fgColor: { argb: 'FFFFCDD2' } // Red
+            fgColor: { argb: 'ffffffff' } // Red
           };
         }
         
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
       }
     }
-
+*/
     // ============================================
     // SHEET 2: Decision History (Detailed)
     // ============================================

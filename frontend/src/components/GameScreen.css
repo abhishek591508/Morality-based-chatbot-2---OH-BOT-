@@ -4,10 +4,11 @@
   align-items: center;
   min-height: 100vh;
   padding: 20px;
+  background-color: #0f172a;
 }
 
 .game-card {
-  background-color: white;
+  background-color: #182645;
   border-radius: 16px;
   padding: 32px;
   max-width: 800px;
@@ -25,12 +26,12 @@
 
 .player-name {
   font-size: 20px;
-  color: #4a90e2;
+  color: #fdfdfd;
   margin: 0;
 }
 
 .narration-box {
-  background-color: #f8f9fa;
+  background-color: #0a1631;
   border-radius: 12px;
   padding: 24px;
   margin-bottom: 24px;
@@ -40,7 +41,7 @@
 .narration-text {
   font-size: 16px;
   line-height: 1.8;
-  color: #2c3e50;
+  color: #cdcece;
   margin: 0;
 }
 
@@ -51,7 +52,7 @@
 .question-text {
   font-size: 20px;
   font-weight: 600;
-  color: #2c3e50;
+  color: #e4f1ff;
   margin: 0;
 }
 
