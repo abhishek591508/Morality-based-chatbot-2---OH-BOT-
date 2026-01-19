@@ -1,5 +1,215 @@
+/* Main App Container */
 .app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated Background Pattern */
+.app::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+  animation: backgroundFloat 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes backgroundFloat {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10px, -10px);
+  }
+  50% {
+    transform: translate(-5px, 5px);
+  }
+  75% {
+    transform: translate(5px, 10px);
+  }
+}
+
+/* Floating Particles Effect */
+.app::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent),
+    radial-gradient(2px 2px at 90% 60%, white, transparent),
+    radial-gradient(1px 1px at 33% 80%, white, transparent),
+    radial-gradient(1px 1px at 15% 90%, white, transparent);
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  animation: sparkle 15s ease-in-out infinite;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Ensure content is above background effects */
+.app > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Smooth transitions between screens */
+.app > div {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading state styling (if needed in future) */
+.app-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: white;
+  font-size: 24px;
+}
+
+.app-loading::before {
+  content: '⏳';
+  font-size: 48px;
+  margin-right: 16px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app {
+    padding: 10px;
+  }
+}
+
+/* Dark mode support (optional - can be toggled later) */
+@media (prefers-color-scheme: dark) {
+  .app {
+    background: linear-gradient(135deg, #434343 0%, #000000 100%);
+  }
+}
+
+/* Accessibility - Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .app::before,
+  .app::after {
+    animation: none;
+  }
+  
+  .app > div {
+    animation: none;
+  }
+}
+
+/* Print styles - hide decorative elements when printing */
+@media print {
+  .app::before,
+  .app::after {
+    display: none;
+  }
+  
+  .app {
+    background: white;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .app {
+    background: linear-gradient(135deg, #000080 0%, #000000 100%);
+  }
+}
+
+/* Focus styles for keyboard navigation */
+.app *:focus-visible {
+  outline: 3px solid #FFD700;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Smooth scrolling for the entire app */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  /* transition: background 0.3s ease; */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+/* .app {
   min-height: 100vh;
   background: linear-gradient(135deg, #909090 0%, #7b7b7b 100%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-} 
+}  */

@@ -1,0 +1,305 @@
+/* Story Selection Container */
+.story-selection-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.story-selection-card {
+  background-color: white;
+  border-radius: 16px;
+  padding: 48px;
+  max-width: 1100px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Header */
+.selection-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.selection-subtitle {
+  font-size: 18px;
+  color: #7f8c8d;
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+/* Stories Grid */
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 40px;
+  margin-bottom: 32px;
+}
+
+/* Story Option Card */
+.story-option {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border: 2px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 32px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.story-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #4a90e2, #764ba2);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.story-option:hover {
+  transform: translateY(-8px);
+  border-color: #4a90e2;
+  box-shadow: 0 16px 40px rgba(74, 144, 226, 0.25);
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.story-option:hover::before {
+  transform: scaleX(1);
+}
+
+/* Story Icon */
+.story-icon {
+  font-size: 72px;
+  text-align: center;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.story-option:hover .story-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Story Title */
+.story-option-title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.story-option-subtitle {
+  font-size: 14px;
+  color: #4a90e2;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Story Description */
+.story-option-description {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  text-align: center;
+  min-height: 80px;
+}
+
+/* Story Meta Information */
+.story-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background-color: #f0f7ff;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  font-size: 14px;
+  color: #2c3e50;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Moral Focus Section */
+.moral-focus {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.moral-title {
+  font-size: 13px;
+  color: #7f8c8d;
+  margin-bottom: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.moral-tags {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.moral-tag {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* Select Button */
+.story-select-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.story-select-btn:hover {
+  background: linear-gradient(135deg, #357abd 0%, #2868a8 100%);
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(74, 144, 226, 0.4);
+}
+
+.story-select-btn:active {
+  transform: scale(0.98);
+}
+
+/* Footer */
+.selection-footer {
+  text-align: center;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 2px solid #e0e0e0;
+}
+
+.footer-text {
+  font-size: 15px;
+  color: #7f8c8d;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .stories-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .story-selection-card {
+    padding: 32px 24px;
+  }
+  
+  .selection-title {
+    font-size: 28px;
+  }
+  
+  .selection-subtitle {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+  
+  .story-option {
+    padding: 24px;
+  }
+  
+  .story-icon {
+    font-size: 56px;
+  }
+  
+  .story-option-title {
+    font-size: 22px;
+  }
+  
+  .story-meta {
+    gap: 12px;
+  }
+  
+  .meta-item {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-selection-card {
+    padding: 24px 16px;
+  }
+  
+  .selection-title {
+    font-size: 24px;
+  }
+  
+  .story-option-description {
+    min-height: auto;
+    font-size: 14px;
+  }
+  
+  .moral-tags {
+    gap: 8px;
+  }
+  
+  .moral-tag {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+}
+
+/* Animation for card entrance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.story-option {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.story-option:nth-child(2) {
+  animation-delay: 0.1s;
+}
