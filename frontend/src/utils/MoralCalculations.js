@@ -1,9 +1,10 @@
 export const getInitialScores = () => ({
-  honesty: 50,
+  wisdom: 50,
+  
   empathy: 50,
   fairness: 50,
   duty: 50,
-  wisdom: 50,
+  honesty: 50,
   humility: 50,
   responsibility: 50,
   riskAwareness: 50,
@@ -65,8 +66,11 @@ export const getScoreColor = (value) => {
   // if (value >= 70) return '#4caf50';
   // if (value >= 50) return '#ff9800';
   // return '#f44336';
+  if (value > 50) return '#50c554';
+  if (value < 50) return '#ef9917';
+  return '#50c554';
   
-  return '#6c6c6c';
+  // return '#6c6c6c';
 };
 
 export const determineConditionalEnding = (scores) => {

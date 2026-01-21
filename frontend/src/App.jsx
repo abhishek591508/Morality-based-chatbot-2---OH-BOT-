@@ -22,6 +22,7 @@ function App() {
   const [currentScene, setCurrentScene] = useState('scene1');
   const [moralScores, setMoralScores] = useState(getInitialScores());
   const [decisionHistory, setDecisionHistory] = useState([]);
+  const [sceneNumber, setSceneNumber] = useState(1);
 
   // Handle start button from welcome screen
   const handleStart = () => {
@@ -52,6 +53,9 @@ function App() {
 
   // Handle choice selection during gameplay
   const handleChoiceSelect = (choice) => {
+    //increase sceneNumber
+    setSceneNumber(prev => prev + 1);
+
     // Update moral scores
     const newScores = updateMoralScores(moralScores, choice.moralImpact);
     setMoralScores(newScores);
@@ -97,13 +101,21 @@ function App() {
   };
 
   // Handle play again - reset everything
-  const handlePlayAgain = () => {
-    setGameState('welcome');
+  const handleReStart = () => {
+    setGameState('username');
     setUsername('');
     setSelectedStory('story1'); // Reset to default
     setCurrentScene('scene1');
     setMoralScores(getInitialScores());
     setDecisionHistory([]);
+    setSceneNumber(1);
+  };
+  const handlePlayAgain = () => {
+    setGameState('playing');
+    setCurrentScene('scene1');
+    setMoralScores(getInitialScores());
+    setDecisionHistory([]);
+    setSceneNumber(1);
   };
 
   // Get current story and scene data
@@ -135,6 +147,7 @@ function App() {
           scene={currentSceneData}
           storyTitle={currentStoryData.title}
           onChoiceSelect={handleChoiceSelect}
+          sceneNumber={sceneNumber}
         />
       )}
       
@@ -147,6 +160,7 @@ function App() {
           feedback={feedback}
           endingType={currentSceneData.endingType}
           onPlayAgain={handlePlayAgain}
+          onReStart={handleReStart}
         />
       )}
     </div>

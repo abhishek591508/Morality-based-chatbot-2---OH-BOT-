@@ -5,7 +5,7 @@
 
 .choice-button {
   width: 100%;
-  background-color: rgb(255, 255, 255);
+  background-color: white;
   border: 2px solid #e0e0e0;
   border-radius: 10px;
   padding: 16px;
@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   font-size: 15px;
 }
 
@@ -22,6 +22,9 @@
   border-color: #4a90e2;
   background-color: #f0f7ff;
   transform: translateX(4px);
+}
+.choice-button:active{
+  background-color: rgb(189, 206, 255);
 }
 
 .choice-label {
@@ -37,7 +40,7 @@
 }
 
 .choice-text {
-  color: #000000;
+  color: #2c3e50;
   flex: 1;
 }
 
@@ -50,20 +53,20 @@
   color: white;
   border-radius: 8px;
   padding: 12px;
-  margin-top: 8px;
+  margin-top: 0px;
   z-index: 1000;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease-in;
-  opacity: 0.6;
+  animation: fadeIn1 0.2s ease-in;
+  opacity: 0.9;
 }
 
-@keyframes fadeIn {
+@keyframes fadeIn1 {
   from {
     opacity: 0;
-    transform: translateY(-5px);
+    transform: translateY(-10px);
   }
   to {
-    opacity: 0.6;
+    opacity: 0.9;
     transform: translateY(0);
   }
 }

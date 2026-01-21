@@ -3,7 +3,7 @@ import { getScoreColor } from '../utils/moralCalculations';
 import './ResultsScreen.css';
 import { downloadExcelReport } from '../utils/database';
 
-const ResultsScreen = ({ username, moralScores, feedback, endingType, onPlayAgain }) => {
+const ResultsScreen = ({ username, moralScores, feedback, endingType, onPlayAgain, onReStart }) => {
   const getEndingTitle = () => {
     switch (endingType) {
       case 'survival':
@@ -12,8 +12,61 @@ const ResultsScreen = ({ username, moralScores, feedback, endingType, onPlayAgai
         return "A Tragic End";
       case 'prevention':
         return "Wisdom Prevails!";
+
+        // Story 2 endings
+      case 'unchanged':
+        return "Unchanged";
+      case 'redemption':
+        return "Redemption Earned";
+      case 'consequence':
+        return "Deserved Consequence";
+      case 'coward':
+        return "Coward's Flee";
+      case 'forgiveness':
+        return  "Forgiveness Granted";
+      case 'weak_redemption':
+        return "Weak Apology";
+      case 'fled':
+        return "Fled in Shame";
+      case 'validated':
+        return "Validated Change";
+      case 'kindness':
+        return "Kindness Prevails";
+      case 'balanced':
+        return "Balanced Kindness";
+      case 'honest':
+        return "Honest Path";
+      case 'pure':
+        return "Pure Kindness";
+      case 'softened':
+        return "Softened Heart";
+      case 'self_betrayal':
+        return "Self Betrayal";
+      case 'solitude':
+        return "Chosen Solitude";
+      case 'growth':
+        return "Reflective Growth";
+      case 'false':
+        return "False Redemption";
+      case 'exile':
+        return "Self Exile";
+      case 'protected':
+        return "Protected Others";
+      case 'victory':
+        return "Self-Control Victory";
+      case 'guided':
+        return "Guided Redemption";
+      case 'desperate':
+        return "Desperate Honesty";
+      case 'irredeemable':
+        return "Irredeemable";
+      case 'mercy':
+        return  "Mercy Received";
+
+
       default:
         return "Story Complete";
+        
     }
   };
 
@@ -63,6 +116,9 @@ const ResultsScreen = ({ username, moralScores, feedback, endingType, onPlayAgai
         <div className='button-row'>
         <button className="primary-button" onClick={onPlayAgain}>
           Play Again
+        </button>
+        <button className="primary-button" onClick={onReStart}>
+          Restart Game
         </button>
         <button className="primary-button" onClick={downloadExcelReport}>
           DOWNLOAD EXCEL SHEET

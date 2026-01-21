@@ -16,6 +16,17 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   max-height: 90vh;
   overflow-y: auto;
+  animation: sceneFade 0.5s ease-in-out
+}
+@keyframes sceneFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .game-header {
@@ -41,7 +52,7 @@
 .narration-text {
   font-size: 16px;
   line-height: 1.8;
-  color: #cdcece;
+  color: #ffffff;
   margin: 0;
 }
 
@@ -52,11 +63,26 @@
 .question-text {
   font-size: 20px;
   font-weight: 600;
-  color: #e4f1ff;
+  color: #ffffff;
+  background-color: #0a1631;
+  padding: 8px;
+  border-radius: 12px;
+  border-left: 4px solid #4a90e2;
   margin: 0;
 }
 
 .choices-container {
   display: flex;
   flex-direction: column;
+}
+
+.story-label {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
