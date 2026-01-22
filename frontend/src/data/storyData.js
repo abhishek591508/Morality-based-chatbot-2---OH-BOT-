@@ -6,161 +6,535 @@ export const STORY_DATA = {
     thumbnail: "🧙‍♂️",
     description: "Four scholars discover the remains of a lion. Will wisdom prevail over arrogance?",
     scenes: {
+
       scene1: {
         id: 'scene1',
-        narration: `Four Brahmin scholars were walking on a dusty road. They were talking excitedly about their future.
+        narration: `Four Brahmin scholars were walking on a dusty road. They were talking excitedly about their future and all the wonderful things they would do with their knowledge.
 
-        The first scholar said proudly, "We know scriptures and magic very well. There is nothing that we cannot do."
+        The first scholar said proudly, "We know scriptures and magic very well. There is nothing that we cannot do. We are the greatest scholars in the land!"
 
-        The second scholar added, "Yes! Kings will invite us to their palaces and respect us for our knowledge."
+        The second scholar added, "Yes! Kings will invite us to their palaces and respect us for our knowledge. They will give us wealth and power."
 
-        The third scholar said confidently, "Knowledge is the greatest power. With it, we can change the world."
+        The third scholar said confidently, "Knowledge is the greatest power that exists in this world. With it, we can change the world and make people follow us."
 
-        But you warned them gently, You said, "Knowledge is powerful, but wisdom is even more important. Without wisdom, knowledge can cause great harm."
+        But you warned them gently. You said, "Knowledge is powerful, but wisdom is even more important than knowledge. Without wisdom, knowledge can cause great harm to the world and to ourselves."
 
-        The first scholar laughed and ignored your words. He said "You always warn us," "Brave people get success!"`,
-        question: "What will you say ?",
+        The first scholar laughed and ignored your words. He said "You always warn us about things," "Brave people get success! Why do you always hold us back?"`,
+        question: "What will you say to them?",
         choices: [
           {
             id: 'A',
-            text: "You're right! Let's use our knowledge fearlessly!",
+            text: "You're right! Let's use our knowledge fearlessly",
             preview: "You encourage their confidence.",
-            moralImpact: { arrogance: 15, wisdom: -15, humility: -10, fairness: 10, duty: -15, responsibility: -15, riskAwareness: -15, honesty: 5, empathy: 15},
-            nextScene: 'scene2'
+            moralImpact: { arrogance: 15, wisdom: -15, humility: -10, fairness: 5, duty: -10, responsibility: -15, riskAwareness: -15, honesty: 5, empathy: -5},
+            nextScene: 'scene2a'
           },
           {
             id: 'B',
-            text: "Boldness is good, but we must balance it with caution.",
+            text: "Boldness is good, but we must balance it with caution and responsibility.",
             preview: "You offer a measured perspective.",
             moralImpact: { wisdom: 15, humility: 10, arrogance: -5, honesty: 11, empathy: 15, fairness: 10, duty: 15, responsibility: 15, riskAwareness: 15 },
-            nextScene: 'scene2'
+            nextScene: 'scene2b'
           },
           {
             id: 'C',
-            text: "Knowledge is powerful, but only when used wisely.",
+            text: "Knowledge is powerful, but only when used with wisdom.",
             preview: "You emphasize wisdom over raw power.",
-            moralImpact: { wisdom: 15, responsibility: 15, humility: 15, honesty: 15, fairness: 15, duty: 15, riskAwareness: 15, arrogance: -15 },
-            nextScene: 'scene2'
+            moralImpact: { wisdom: 20, responsibility: 15, humility: 15, honesty: 15, fairness: 15, duty: 15, riskAwareness: 15, arrogance: -15, empathy: 10 },
+            nextScene: 'scene2c'
           },
           {
             id: 'D',
-            text: "Say nothing and continue walking.",
-            preview: "You remain silent and the scholars continue their conversation.",
-            moralImpact: {wisdom:-5, responsibility:-20,  arrogance:-5, fairness: -10, duty: -20, honesty:5},
-            nextScene: 'scene2'
+            text: "Say nothing and continue walking quietly behind them.",
+            preview: "You remain silent and let them continue their conversation.",
+            moralImpact: {wisdom:-10, responsibility:-20, arrogance: 0, fairness: -10, duty: -20, honesty: 0, empathy: -15, riskAwareness: -10},
+            nextScene: 'scene2a'
           }
         ]
       },
-      scene2: {
-        id: 'scene2',
-        narration: `As you walked deeper into the forest, you came across the bones of a powerful lion. The eyes of your companions shone with excitement. One of them said,
-                    "This is the perfect chance to show our skills. We will bring this lion back to life!".
-                    Second scholar said, "Just imagine how amazed everyone will be!". A cold fear slowly passed through your body.`,
-        question: "What will you say?",
+      scene2a: {
+        id: 'scene2a',
+        narration: `As you walked deeper into the forest with them, you came across the bones of a powerful lion. The bones were huge and still had marks where the strong muscles used to be. The eyes of your three companions shone with excitement and greed.
+
+        One of them said, "This is the perfect chance to show our incredible skills. We will bring this lion back to life and it will be the most amazing thing anyone has ever seen!"
+
+        The second scholar said, "Just imagine how amazed and frightened everyone will be! Kings will hear about us across the whole kingdom!"
+        
+        The third scholar was already pulling out ancient books from his bag. A cold fear slowly passed through your body as you realized what they were planning to do.`,
+        question: "What will you do about this dangerous plan?",
         choices: [
           {
             id: 'A',
-            text: "This is an excellent opportunity! Let's proceed!",
-            preview: "The group begins preparations immediately.",
-            moralImpact: {wisdom:-5, responsibility:-15,  arrogance: 5, fairness: -10, honesty: 5, duty: -15},
-            nextScene: 'scene4'
+            text: "This is an excellent opportunity! Let's show everyone.",
+            preview: "You ignore your fears and support the dangerous plan.",
+            moralImpact: {wisdom:-10, responsibility:-20, arrogance: 15, fairness: -10, honesty: 0, duty: -15, riskAwareness: -20, empathy: -15},
+            nextScene: 'scene3a'
           },
           {
             id: 'B',
-            text: "Wait - reviving a lion is extremely dangerous!",
-            preview: "You shown your concern about the life-threatening risk.",
-            moralImpact: { wisdom: 10, responsibility: 15, honesty: 15, fairness: 15, duty: 15, riskAwareness: 15, arrogance: -15 },
-            nextScene: 'scene3'
+            text: "Wait, wait! This is extremely dangerous and wrong.",
+            preview: "You strongly oppose this dangerous plan with clear concerns.",
+            moralImpact: { wisdom: 15, responsibility: 20, honesty: 15, fairness: 10, duty: 20, riskAwareness: 20, arrogance: -15, empathy: 10 },
+            nextScene: 'scene3b'
           },
           {
             id: 'C',
-            text: "Let me think about the consequences first...",
-            preview: "You ask for time to consider.",
-            moralImpact: { wisdom: 15, responsibility: 15, humility: 15, honesty: 15, fairness: 15, duty: 15, riskAwareness: 10, arrogance: -15, empathy: 15},
-            nextScene: 'scene3'
+            text: "I need time to think about this carefully.",
+            preview: "You ask for time to carefully think about the consequences.",
+            moralImpact: { wisdom: 18, responsibility: 18, humility: 15, honesty: 15, fairness: 15, duty: 15, riskAwareness: 18, arrogance: -15, empathy: 12},
+            nextScene: 'scene3b'
           },
           {
             id: 'D',
-            text: "Stand aside and let them decide.",
-            preview: "You step back, avoiding responsibility.",
-            moralImpact: {wisdom:-5, responsibility:-15,  arrogance:-5, fairness: -10, duty: -15, honesty: 5},
-            nextScene: 'scene4'
+            text: "I don't want to be part of this. You people decide for yourselves.",
+            preview: "You step back and avoid taking responsibility.",
+            moralImpact: {wisdom:-10, responsibility:-25, arrogance: -5, fairness: -10, duty: -25, honesty: 5, empathy: -10, riskAwareness: 0},
+            nextScene: 'scene3a'
           }
         ]
       },
-      scene3: {
-        id: 'scene3',
-        narration: `The scholars ignored your concerns and began preparing the ritual. 
-                    The first scholar started chanting ancient verses. 
-                    One of them said to you, "You're being a coward, What use is knowledge if we don't apply it?" The skeletal pieces began to tremble and move together.`,
-        question: "They call you a coward. What will you say?",
+      scene2b: {
+        id: 'scene2b',
+        narration: `As you walked deeper into the forest with the scholars, you came across the bones of a powerful lion. The massive skeleton lay on the ground, and the three scholars gathered around it with wonder in their eyes.
+
+        One of them said excitedly, "Look at this amazing opportunity! We could use this to show people what we have learned! This would prove that our knowledge and power are real!"
+
+        The second scholar added, "But we must be careful. If something goes wrong, we could hurt someone. We need to think about what could happen."
+        
+        You could see that your earlier words about balance and responsibility were already making them think more carefully about their choices.`,
+        question: "What do you suggest to them now?",
         choices: [
           {
             id: 'A',
-            text: "I will help you revive it to prove I am not a coward!",
-            preview: "Pride takes over. You join the ritual.",
-            moralImpact: {wisdom:-5, responsibility:-15,  arrogance:15, riskAwareness: -15, fairness: -10,honesty: 5, duty: -15},
-            nextScene: 'scene4'
+            text: "Let's proceed carefully and test our knowledge slowly.",
+            preview: "You support a careful approach to the ritual.",
+            moralImpact: {wisdom: 10, responsibility: 12, arrogance: 5, fairness: 10, honesty: 12, duty: 12, riskAwareness: 12, empathy: 8},
+            nextScene: 'scene3c'
           },
           {
             id: 'B',
-            text: "I refuse to participate in this madness. I'm climbing that tree!",
-            preview: "You reject their mockery and prioritize survival.",
-            moralImpact: { wisdom: 15, responsibility: -20, humility: -5, honesty: 5, fairness: 10, duty: -20, riskAwareness: 15, arrogance: 5 },
-            nextScene: 'scene4'
+            text: "I still have deep concerns about bringing a wild animal back to life.",
+            preview: "You continue to warn them about the real dangers.",
+            moralImpact: { wisdom: 18, responsibility: 20, honesty: 16, fairness: 12, duty: 18, riskAwareness: 20, arrogance: -10, empathy: 15},
+            nextScene: 'scene3d'
           },
           {
             id: 'C',
-            text: "Please reconsider! This will end in danger!",
-            preview: "You make an emotional appeal showing a genuine care.",
-            moralImpact: { wisdom: 15, responsibility: 15, humility: 15, honesty: 16, fairness: 15, duty: 15, riskAwareness: 15, arrogance: -15 },
-            nextScene: 'scene4'
-          },
-          {
-            id: 'D',
-            text: "Say nothing and stay on the ground.",
-            preview: "Paralyzed, you neither help nor save yourself.",
-            moralImpact: {wisdom:-10, responsibility:-20,  arrogance: 15, honesty: 5, fairness: -10, duty: -20},
-            nextScene: 'scene4'
+            text: "If you truly want to test your knowledge, let's find a safer way.",
+            preview: "You suggest finding a safer alternative.",
+            moralImpact: { wisdom: 20, responsibility: 18, humility: 15, honesty: 15, fairness: 15, duty: 18, riskAwareness: 18, arrogance: -15, empathy: 18},
+            nextScene: 'scene3c'
           }
         ]
       },
-      scene4: {
-        id: 'scene4',
-        narration: `The ritual was nearly complete. The lion's skeletal frame was now covered in flesh and fur. 
-                    The third scholar raised his hands dramatically and said, "And now, the lion is taking breath of life!" This was your last chance to act.`,
-        question: "This is your final moment. What will you do?",
+      scene2c: {
+        id: 'scene2c',
+        narration: `As you all walked deeper into the forest, the thick trees blocked out much of the sunlight. It was quiet and peaceful. Then you came upon the large bones of a lion lying among the rocks and fallen leaves.
+
+        The three scholars stared at the skeleton in amazement. Their minds were already working on the problem of bringing it back to life.
+
+        One of them said, "With our knowledge, we could do this. But is it the right thing to do?" You could see that your words about wisdom had planted a seed of doubt in their minds.
+
+        Another scholar said, "Yes, we should think about whether we should do this, not just whether we can do this. Those are two different questions."`,
+        question: "What is your response to their thoughtful words?",
         choices: [
           {
             id: 'A',
-            text: "Join them in the spell.",
-            preview: "You abandon wisdom entirely, choosing loyalty over survival. A fatal mistake.",
-            moralImpact: {wisdom:-5, responsibility:-15,  arrogance:15, riskAwareness: -15, fairness: -10, honesty: 5, duty: -15},
+            text: "I'm glad you are thinking about this carefully.",
+            preview: "You praise their thoughtful consideration.",
+            moralImpact: { wisdom: 20, responsibility: 20, humility: 15, honesty: 16, fairness: 15, duty: 18, riskAwareness: 18, arrogance: -18, empathy: 18},
+            nextScene: 'scene3e'
+          },
+          {
+            id: 'B',
+            text: "That is good thinking, but I still have concerns. A lion is a wild and dangerous creature.",
+            preview: "You support their caution while adding your concerns.",
+            moralImpact: { wisdom: 18, responsibility: 18, honesty: 15, fairness: 12, duty: 16, riskAwareness: 20, arrogance: -15, empathy: 15},
+            nextScene: 'scene3e'
+          },
+          {
+            id: 'C',
+            text: "Now you understand true wisdom.",
+            preview: "You share a wise saying with them.",
+            moralImpact: { wisdom: 22, responsibility: 18, humility: 18, honesty: 15, fairness: 15, duty: 18, riskAwareness: 18, arrogance: -20, empathy: 15},
+            nextScene: 'scene3e'
+          }
+        ]
+      },
+      scene3a: {
+        id: 'scene3a',
+        narration: `The three scholars became even more confident after you supported them. They immediately began preparing the ritual without any more discussion or hesitation.
+
+        The first scholar started chanting ancient verses in a loud voice, and the air around the bones began to feel strange and heavy. You could feel something powerful starting to move in the forest.
+
+        The skeleton began to shake and the bones started moving together, connecting with each other. Flesh and fur started appearing on the bones like magic.
+
+        One of the scholars turned to you and said, "See? We told you our knowledge was powerful! Nothing bad will happen. Just watch this amazing moment!"
+
+        But your fear was growing stronger with every passing second. Something felt very wrong about what was happening.`,
+        question: "What do you do as the lion takes shape before your eyes?",
+        choices: [
+          {
+            id: 'A',
+            text: "Help them with the ritual and complete the spell together with them.",
+            preview: "You join them in finishing the ritual despite your fears.",
+            moralImpact: {wisdom:-10, responsibility:-20, arrogance: 15, riskAwareness: -25, fairness: -10, honesty: 0, duty: -15, empathy: -20},
             nextScene: 'ending_death'
           },
           {
             id: 'B',
-            text: "Climb the tree immediately to save yourself.",
-            preview: "You act decisively to preserve your life, though it means watching your friends face danger.",
-            moralImpact: { wisdom: 15, responsibility: -20, humility: 5, honesty: 9, fairness: 15, duty: -20, riskAwareness: 15, arrogance: -5 },
+            text: "Quietly back away from the ritual and climb up into the tree.",
+            preview: "You act to preserve your own life by moving away.",
+            moralImpact: { wisdom: 12, responsibility: -20, humility: 5, honesty: 8, fairness: 10, duty: -20, riskAwareness: 20, arrogance: -5, empathy: -15 },
             nextScene: 'ending_survival'
           },
           {
             id: 'C',
-            text: "Make one final desperate plea to stop them.",
-            preview: "You try one last time to save everyone. Whether they listen depends on your previous influence.",
-            moralImpact: { wisdom: 15, responsibility: 15, humility: 15, honesty: 15, fairness: 15, duty: 15, riskAwareness: 15, arrogance: -15 , honesty: 12},
+            text: "Make one final desperate plea to stop them immediately.",
+            preview: "You try one last time to make them stop the dangerous ritual.",
+            moralImpact: { wisdom: 15, responsibility: 18, humility: 12, honesty: 15, fairness: 15, duty: 18, riskAwareness: 18, arrogance: -15, empathy: 20},
             nextScene: 'ending_conditional'
           },
           {
             id: 'D',
-            text: "Freeze in fear and do nothing.",
-            preview: "Terror paralyzes you. You can neither flee nor intervene. A fatal inaction.",
-            moralImpact: {wisdom:-5, responsibility:-15,  arrogance:-5, fairness: -10, duty: -15},
+            text: "Stand frozen in fear and do nothing at all as the lion comes back to life.",
+            preview: "Terror completely paralyzes you. You cannot move or speak or act.",
+            moralImpact: {wisdom:-15, responsibility:-25, arrogance: -5, fairness: -15, duty: -25, honesty: 0, empathy: -25, riskAwareness: -10},
             nextScene: 'ending_death'
           }
         ]
       },
+      scene3b: {
+        id: 'scene3b',
+        narration: `Your strong words made the scholars pause for a moment. They looked at each other, unsure what to do.
+
+        The first scholar shook his head and said, "You are being too fearful and cautious. Brave people take risks and that is how they become great. Are you saying our knowledge is not strong enough?"
+
+        The second scholar said, "I want to continue. I want to prove that we have real power and that our studies have not been a waste of time."
+
+        But you could see that the third scholar seemed uncertain. There was doubt in his eyes. He was listening to your warning, but the pressure from his friends was very strong.
+
+        The first scholar said, "If you are truly brave, you will help us. If you run away, you are just a coward who wastes time with warnings instead of taking action."`,
+        question: "They call you a coward and a waster of time. How do you respond?",
+        choices: [
+          {
+            id: 'A',
+            text: "I'm not afraid, but I am being smart. Doing dangerous things without thinking is not bravery.",
+            preview: "You stand firm in your beliefs despite their insults.",
+            moralImpact: { wisdom: 18, responsibility: 20, humility: 18, honesty: 18, fairness: 15, duty: 20, riskAwareness: 20, arrogance: -15, empathy: 15},
+            nextScene: 'scene4a'
+          },
+          {
+            id: 'B',
+            text: "I will help you to show you that I am not a coward.",
+            preview: "You give in to peer pressure and pride. You agree to help.",
+            moralImpact: {wisdom:-15, responsibility:-20, arrogance: 18, riskAwareness: -25, fairness: -10, honesty: 5, duty: -15, empathy: -20},
+            nextScene: 'scene4a'
+          },
+          {
+            id: 'C',
+            text: "You can think whatever you want about me. I refuse to participate in this madness.",
+            preview: "You reject their mockery and prioritize your own survival.",
+            moralImpact: { wisdom: 15, responsibility: -15, humility: -8, honesty: 10, fairness: 5, duty: -15, riskAwareness: 18, arrogance: 8, empathy: -15 },
+            nextScene: 'scene4a'
+          },
+          {
+            id: 'D',
+            text: "Say nothing and stand on the ground watching them.",
+            preview: "You neither speak nor act. You are paralyzed by confusion.",
+            moralImpact: {wisdom:-12, responsibility:-22, arrogance: 10, honesty: 0, fairness: -12, duty: -22, riskAwareness: -5, empathy: -18},
+            nextScene: 'scene4a'
+          }
+        ]
+      },
+      scene3c: {
+        id: 'scene3c',
+        narration: `The scholars considered your words about taking things slowly and carefully. The first scholar said, "Yes, this makes sense. We should be smart about this and not rush into things without thinking."
+
+        The second scholar added, "If we do this step by step, we can stop at any moment if something goes wrong. That is a much better idea."
+
+        They began to gather special herbs and stones to prepare the ritual. You could see that they were taking more time to think about what they were doing, and they were asking questions about each step.
+
+        As they worked, they discussed what might go wrong and how they would handle problems. Your advice had made them much more careful and thoughtful than they would have been before.
+
+        But then the first scholar said, "Once we start this ritual, we will not be able to stop it easily. Once the power begins, it will continue until it is done. Are we really ready for that?"`,
+        question: "What do you say to them now as they realize the seriousness",
+        choices: [
+          {
+            id: 'A',
+            text: "Since you understand the risk, I think we should not do this at all.",
+            preview: "You advise them to cancel the dangerous plan entirely.",
+            moralImpact: { wisdom: 20, responsibility: 22, honesty: 16, fairness: 12, duty: 20, riskAwareness: 22, arrogance: -18, empathy: 18},
+            nextScene: 'scene5a'
+          },
+          {
+            id: 'B',
+            text: "If you are going to do this, then we must have a plan to control the lion.",
+            preview: "You help them prepare to manage the consequences of the ritual.",
+            moralImpact: { wisdom: 16, responsibility: 18, honesty: 14, fairness: 12, duty: 16, riskAwareness: 16, arrogance: -12, empathy: 14},
+            nextScene: 'scene4b'
+          },
+          {
+            id: 'C',
+            text: "Now that you understand the power, the choice is yours.",
+            preview: "You let them choose while removing yourself from the situation.",
+            moralImpact: { wisdom: 14, responsibility: -8, humility: 12, honesty: 14, fairness: 14, duty: -8, riskAwareness: 14, arrogance: -8, empathy: 10},
+            nextScene: 'scene4b'
+          }
+        ]
+      },
+      scene3d: {
+        id: 'scene3d',
+        narration: `Your words of warning touched something in the scholars' hearts. They could see that you truly cared about what might happen, and you were not just being fearful or doubtful of their abilities.
+
+        The first scholar sat down on a rock and said slowly, "You are right. We have been thinking only about proving our power. We have not been thinking about the danger we could create."
+
+        The second scholar added, "A lion is not a pet. It is a wild creature with its own power and nature. Even if we bring it back to life, we cannot make it gentle or safe just because we made it."
+
+        The third scholar said, "I think our friend has shown us real wisdom. Knowledge and power are not the same as understanding and care for others."
+
+        But the first scholar was still not completely convinced. He said, "But what if we could do it safely? What if we could prove that knowledge has limits that we can control?"`,
+        question: "How do you respond to the first scholar",
+        choices: [
+          {
+            id: 'A',
+            text: "Some things are too dangerous to even try.",
+            preview: "You firmly advise them to abandon the plan completely.",
+            moralImpact: { wisdom: 22, responsibility: 22, honesty: 18, fairness: 15, duty: 22, riskAwareness: 22, arrogance: -20, empathy: 20},
+            nextScene: 'ending_wisdom'
+          },
+          {
+            id: 'B',
+            text: "I understand your hope, but I cannot agree.",
+            preview: "You make an emotional and personal appeal to them.",
+            moralImpact: { wisdom: 20, responsibility: 20, humility: 16, honesty: 17, fairness: 14, duty: 20, riskAwareness: 20, arrogance: -18, empathy: 22},
+            nextScene: 'ending_wisdom'
+          },
+          {
+            id: 'C',
+            text: "You can try if you want, but I will not stay to watch this happen.",
+            preview: "You decide to remove yourself and let them choose their own fate.",
+            moralImpact: { wisdom: 16, responsibility: -12, humility: 10, honesty: 12, fairness: 10, duty: -12, riskAwareness: 18, arrogance: 5, empathy: -12},
+            nextScene: 'ending_conditional'
+          }
+        ]
+      },
+      scene3e: {
+        id: 'scene3e',
+        narration: `Your wise words struck deeply into the hearts of all three scholars. They stood around the lion's bones in silence, thinking about what you had said.
+
+        The first scholar said with respect in his voice, "You are right. Just because we have knowledge does not mean we should use it for everything. Wisdom means knowing when not to use our power."
+
+        The second scholar said, "I feel shame now that I wanted to bring this lion back to life just to show off to others. That was not the real purpose of learning."
+
+        The third scholar nodded slowly and said, "Our friend has taught us something more valuable than any ritual or magic spell. We have learned that knowledge without wisdom is not knowledge at all. It is just power without purpose."
+
+        The first scholar turned to you and said, "What should we do now? We understand now that bringing the lion back would be wrong, but what is the right thing to do?"`,
+        question: "What will you suggest",
+        choices: [
+          {
+            id: 'A',
+            text: "Let us respect this creature that once lived.",
+            preview: "You suggest a respectful and meaningful alternative.",
+            moralImpact: { wisdom: 22, responsibility: 22, humility: 18, honesty: 18, fairness: 18, duty: 22, riskAwareness: 20, arrogance: -22, empathy: 22},
+            nextScene: 'ending_wisdom'
+          },
+          {
+            id: 'B',
+            text: "Now you understand the true purpose of your knowledge. ",
+            preview: "You redirect their knowledge toward helping others.",
+            moralImpact: { wisdom: 24, responsibility: 24, humility: 20, honesty: 18, fairness: 20, duty: 24, riskAwareness: 18, arrogance: -24, empathy: 24},
+            nextScene: 'ending_wisdom'
+          },
+          {
+            id: 'C',
+            text: "I am truly proud of you for learning this lesson. Wisdom is the greatest knowledge, and you have found it. Let us leave this place together and remember this moment always.",
+            preview: "You praise their growth and learning.",
+            moralImpact: { wisdom: 20, responsibility: 20, humility: 22, honesty: 18, fairness: 16, duty: 20, riskAwareness: 18, arrogance: -20, empathy: 24},
+            nextScene: 'ending_wisdom'
+          }
+        ]
+      },
+      scene4a: {
+        id: 'scene4a',
+        narration: `The three scholars began the ritual in earnest now. The air around the lion's bones became thick and heavy with power. The bones started to glow with a strange light, and the flesh grew on them quickly.
+
+        The ritual was nearly complete now. The lion's skeleton was covered with muscles and fur. Its eyes were beginning to open slowly.
+
+        This was the moment of greatest danger. Once the lion fully came back to life, there would be no stopping it. This was your final chance to do something to prevent disaster.
+
+        The first scholar raised his hands dramatically and said in a loud voice, "And now, the lion is taking its first breath of life! Our knowledge is complete and our power is proven!"
+
+        The lion's chest moved up and down. Its eyes opened wide and looked around at the scholars with ancient hunger and wild anger in them.`,
+        question: "This is your final moment. What will you do?",
+        choices: [
+          {
+            id: 'A',
+            text: "Climb the tree immediately.",
+            preview: "You act decisively to preserve your own life.",
+            moralImpact: { wisdom: 14, responsibility: -18, humility: 5, honesty: 8, fairness: 12, duty: -18, riskAwareness: 20, arrogance: -5, empathy: -18 },
+            nextScene: 'ending_survival'
+          },
+          {
+            id: 'B',
+            text: "Make one final desperate cry out to warn the scholars.",
+            preview: "You make one last attempt to save them all.",
+            moralImpact: { wisdom: 16, responsibility: 20, humility: 16, honesty: 16, fairness: 16, duty: 20, riskAwareness: 18, arrogance: -15, empathy: 22},
+            nextScene: 'ending_conditional'
+          },
+          {
+            id: 'C',
+            text: "Join them in the spell and try to control the lion.",
+            preview: "You abandon safety and try to help at the final moment.",
+            moralImpact: {wisdom:-12, responsibility:-18, arrogance: 15, riskAwareness: -22, fairness: -10, honesty: 5, duty: -15, empathy: -18},
+            nextScene: 'ending_death'
+          },
+          {
+            id: 'D',
+            text: "Freeze in complete fear and terror.",
+            preview: "Terror and shock completely paralyze you.",
+            moralImpact: {wisdom:-15, responsibility:-22, arrogance: -5, fairness: -15, duty: -22, honesty: 0, empathy: -20, riskAwareness: -15},
+            nextScene: 'ending_death'
+          }
+        ]
+      },
+      scene4b: {
+        id: 'scene4b',
+        narration: `The scholars listened to your practical advice about managing what they would create. They began to think seriously about what would happen after the lion came back to life.
+
+        The first scholar said, "We could build a strong cage to keep it contained. We could prepare food and space for it to live."
+
+        The second scholar added, "But keeping a wild lion contained is not the same as controlling it. We would need to feed it and care for it every day for the rest of our lives."
+
+        The third scholar said thoughtfully, "And what if people found out about it? What if it escaped? What responsibility would we have then?"
+
+        As they discussed these practical problems, the reality of what they were planning became clearer and heavier. The enthusiasm they had before was slowly turning into doubt and concern.
+
+        The first scholar looked at you and said, "When you help us think about the real consequences, the whole plan seems much more complicated and difficult than we thought. Maybe we have not thought this through at all."`,
+        question: "As their doubt grows, what do you say to them?",
+        choices: [
+          {
+            id: 'A',
+            text: "I think this doubt you are feeling is wisdom.",
+            preview: "You encourage them to trust their growing doubts.",
+            moralImpact: { wisdom: 22, responsibility: 22, honesty: 18, fairness: 14, duty: 22, riskAwareness: 22, arrogance: -20, empathy: 20},
+            nextScene: 'ending_wisdom'
+          },
+          {
+            id: 'B',
+            text: "If you proceed despite these concerns, you will have to accept complete responsibility of it.",
+            preview: "You make them face the weight of true responsibility.",
+            moralImpact: { wisdom: 20, responsibility: 24, honesty: 18, fairness: 16, duty: 20, riskAwareness: 20, arrogance: -18, empathy: 18},
+            nextScene: 'ending_conditional'
+          },
+          {
+            id: 'C',
+            text: "The choice is still yours to make.",
+            preview: "You respect their choice while distancing yourself from it.",
+            moralImpact: { wisdom: 16, responsibility: -10, humility: 14, honesty: 16, fairness: 14, duty: -10, riskAwareness: 16, arrogance: -8, empathy: 14},
+            nextScene: 'scene5b'
+          }
+        ]
+      },
+      //----
+
+      scene5a: {
+        id: 'scene5a',
+        narration: `After much discussion, the three scholars finally agreed with your strong advice. The first scholar said, 
+        "You have shown us that wisdom is more important than proving our power. We were willing to create terrible danger just to show that our knowledge was real."
+        The second scholar added with sadness, "Think of all the people who could have been hurt if we had gone ahead with this plan. A wild lion loose in the world would kill and destroy."
+        The third scholar said, "We are grateful that our friend was brave enough to keep warning us, even when we mocked him and called him a coward."
+        Together, all four of you collected the bones of the lion and gave them a respectful burial under some trees. You said prayers for the creature that once lived.
+        The first scholar said to you, "We came here thinking we would prove how great we were. Instead, we learned that true greatness comes from knowing when not to use our power. This lesson is worth more than any magic spell."
+        The scholars returned to their village completely changed. They used their knowledge to heal the sick and help the poor. They became wise teachers instead of arrogant scholars.`,
+        question: "What is the final lesson from this story?",
+        choices: [
+          {
+            id: 'A',
+            text: "Knowledge without wisdom is dangerous.",
+            preview: "You reflect on the most important lesson learned.",
+            moralImpact: { wisdom: 25, responsibility: 25, honesty: 20, fairness: 20, duty: 25, riskAwareness: 25, arrogance: -25, empathy: 25},
+            nextScene: 'ending_survival'
+          },
+          {
+            id: 'B',
+            text: "The world needs people who have the courage to say no.",
+            preview: "You reflect on the personal courage required.",
+            moralImpact: { wisdom: 24, responsibility: 24, humility: 22, honesty: 22, fairness: 18, duty: 24, riskAwareness: 22, arrogance: -24, empathy: 24},
+            nextScene: 'ending_survival'
+          },
+          {
+            id: 'C',
+            text: "The most important lesson is that friendship means telling people the truth.",
+            preview: "You emphasize the value of true friendship.",
+            moralImpact: { wisdom: 24, responsibility: 24, humility: 20, honesty: 24, fairness: 20, duty: 24, riskAwareness: 20, arrogance: -22, empathy: 26},
+            nextScene: 'ending_survival'
+          }
+        ]
+      },
+      scene5b: {
+        id: 'scene5b',
+        narration: `The three scholars looked at each other after you spoke those words. They could see that you were serious and that you would not be responsible for what they chose to do.
+
+        For a long time, no one spoke. The weight of the decision pressed down on them heavily. Finally, the first scholar stood up slowly.
+
+        He said, "Our friend has warned us many times. He has shown us wisdom when we wanted only pride. He has tried to save us from ourselves. And now he is saying that he cannot share the responsibility for what we do."
+
+        The second scholar added quietly, "That means that we alone will bear all the consequences if something goes wrong. We cannot blame anyone else. We cannot say that someone else told us to do this."
+
+        The third scholar said with a trembling voice, "When I think about it that way, I realize I do not have the courage to take that responsibility alone. I do not want to be responsible for hurting innocent people."
+
+        But the first scholar was still stubborn. He said, "I will do this ritual alone if I must. I will prove that our knowledge is real, no matter what anyone says."
+
+        The second and third scholars looked at him with sadness. They turned away from him and said they would not participate in this mad plan.
+
+        The first scholar began the ritual alone, chanting the ancient words with great force and power. His two companions and you stood back and watched in fear and sadness.`,
+        question: "The first scholar is completing the ritual alone. What do you do?",
+        choices: [
+          {
+            id: 'A',
+            text: "Climb the tree immediately with the other scholars.",
+            preview: "You save yourself while the first scholar faces his fate alone.",
+            moralImpact: { wisdom: 12, responsibility: -15, humility: 8, honesty: 10, fairness: 8, duty: -15, riskAwareness: 20, arrogance: 0, empathy: -15},
+            nextScene: 'ending_survival'
+          },
+          {
+            id: 'B',
+            text: "Make one last urgent appeal to the first scholar to stop.",
+            preview: "You try one final time to save your friend from himself.",
+            moralImpact: { wisdom: 18, responsibility: 22, humility: 16, honesty: 18, fairness: 16, duty: 22, riskAwareness: 18, arrogance: -15, empathy: 24},
+            nextScene: 'ending_wisdom'
+          },
+          {
+            id: 'C',
+            text: "Stand with the other scholars and watch what happens.",
+            preview: "You witness the result of his stubborn pride.",
+            moralImpact: { wisdom: 14, responsibility: -8, humility: 12, honesty: 12, fairness: 12, duty: -8, riskAwareness: 14, arrogance: 0, empathy: -10},
+            nextScene: 'ending_death'
+          },
+          {
+            id: 'D',
+            text: "Try to physically stop him by grabbing his hands.",
+            preview: "You attempt a physical intervention to stop him.",
+            moralImpact: { wisdom: 16, responsibility: 24, humility: 14, honesty: 14, fairness: 14, duty: 24, riskAwareness: 16, arrogance: -12, empathy: 26},
+            nextScene: 'ending_death'
+          }
+        ]
+      },
+
+      //-----
+      ending_wisdom: {
+        id: 'ending_wisdom',
+        narration: `Years passed after that day in the forest. The three scholars became famous throughout the kingdom, but not for their magical powers or their knowledge of ancient spells.
+        They became famous because they used their learning to help people who were suffering. They opened schools to teach wisdom to young people. They healed the sick with their knowledge. They advised kings with their wisdom.
+        People would come from far away to learn from them because they had learned that true power comes from wisdom and compassion, not from showing off their abilities.
+        The day in the forest when they almost created a terrible disaster became the turning point in their lives. That moment of choosing wisdom over pride changed them forever.
+        You had been brave enough to stand alone against their arrogance. You had cared enough about them to keep warning them, even when they mocked you. Because of your courage and wisdom, three lives were saved, and many more were helped by the good work those scholars did.
+        This is the story of how wisdom is greater than knowledge, and how caring for others is more powerful than any magic spell or ritual.`,
+        isEnding: true,
+        endingType: 'survival'
+      },
+
       ending_survival: {
         id: 'ending_survival',
         narration: `You quickly climbed the tall tree, your hands scraping against the rough bark. Below, 
