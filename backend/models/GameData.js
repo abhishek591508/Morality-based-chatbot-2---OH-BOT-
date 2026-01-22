@@ -27,6 +27,16 @@ const gameDataSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  storyId: {
+    type: String,
+    required: true,
+    enum: ['story1', 'story2'],
+    default: 'story1'
+  },
+  storyTitle: {
+    type: String,
+    required: false
+  },
   moralScores: {
     type: moralScoresSchema,
     required: true
@@ -34,12 +44,8 @@ const gameDataSchema = new mongoose.Schema({
   decisionHistory: [decisionSchema],
   endingType: {
     type: String,
-    enum: ['survival', 'death', 'prevention'],
     required: true
-  },
-  storyId: {
-    type: String,
-    default: 'story1'
+    // Removed enum constraint to allow all Story 2 endings
   },
   playedAt: {
     type: Date,
@@ -51,7 +57,10 @@ const gameDataSchema = new mongoose.Schema({
 
 // Index for faster queries
 gameDataSchema.index({ username: 1, playedAt: -1 });
+gameDataSchema.index({ storyId: 1, endingType: 1 });
 
 const GameData = mongoose.model('GameData', gameDataSchema);
 
 export default GameData;
+
+

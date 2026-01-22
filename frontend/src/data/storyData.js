@@ -202,6 +202,7 @@ export const STORY_DATA = {
     }
   },
 
+  
   // ============================================
   // STORY 2: The Fiddler's Lesson
   // ============================================
@@ -460,14 +461,14 @@ export const STORY_DATA = {
             text: "Ask the hare to spread word of your teaching.",
             preview: "You help but also seek recognition for your deeds.",
             moralImpact: { empathy: 10, arrogance: 10 },
-            nextScene: 'ending_prideful_helper'
+            nextScene: 'ending_default_not_maped'
           },
           {
             id: 'D',
             text: "Teach the hare and ask nothing in return.",
             preview: "Pure altruism—you help simply because it's right.",
             moralImpact: { empathy: 15, humility: 15, fairness: 10 },
-            nextScene: 'ending_pure_kindness'
+            nextScene: 'ending_default_not_maped'
           }
         ]
       },
@@ -505,6 +506,366 @@ export const STORY_DATA = {
             preview: "You choose solitude to maintain your stance.",
             moralImpact: { wisdom: 5, responsibility: 5 },
             nextScene: 'ending_chosen_solitude'
+          }
+        ]
+      },
+
+      scene3_helping_fox: {
+        id: 'scene3_helping_fox',
+        narration: `You decide to teach the fox, even though you refused the wolf earlier. As you patiently show the fox how to play, you feel conflicted about your inconsistency. The fox learns happily, unaware of your earlier refusal to the wolf. A hare then appears, watching your teaching session with interest. "Will you teach me too?" it asks eagerly.`,
+        question: "The hare wants to learn. Will you continue helping, or stop?",
+        choices: [
+          {
+            id: 'A',
+            text: "Teach the hare as well—continue being helpful.",
+            preview: "You decide to help everyone from now on, despite your earlier inconsistency.",
+            moralImpact: { empathy: 15, fairness: -5, responsibility: 10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'B',
+            text: "Refuse the hare—you're being inconsistent enough.",
+            preview: "You stop helping to avoid further unfairness in your choices.",
+            moralImpact: { wisdom: 5, fairness: 5 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'C',
+            text: "Admit your inconsistency and apologize.",
+            preview: "You confess you should have helped the wolf too.",
+            moralImpact: { honesty: 15, humility: 15, wisdom: 10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'D',
+            text: "Leave before making more inconsistent choices.",
+            preview: "You flee to avoid the confusion of your contradictory behavior.",
+            moralImpact: { responsibility: -10, wisdom: -5 },
+            nextScene: 'ending_default_not_maped'
+          }
+        ]
+      },
+
+      scene3_betrayed_values: {
+        id: 'scene3_betrayed_values',
+        narration: `Despite being honest with the wolf, you tricked the fox cruelly. The fox howls in pain as you laugh and walk away. Your earlier honesty now feels like a lie. A hare appears, having witnessed what you just did. "You... you hurt that fox," it says, backing away fearfully. "Are you going to hurt me too?"`,
+        question: "The hare has seen your cruelty. What do you do?",
+        choices: [
+          {
+            id: 'A',
+            text: "Trick the hare too—you've already crossed the line.",
+            preview: "You fully embrace cruelty, abandoning any pretense of honesty.",
+            moralImpact: { honesty: -15, empathy: -15, arrogance: 15 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'B',
+            text: "Try to explain that the fox was different somehow.",
+            preview: "You make weak excuses for your inconsistent behavior.",
+            moralImpact: { honesty: -10, responsibility: -10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'C',
+            text: "Apologize to the hare and free the fox.",
+            preview: "You realize your mistake and try to make amends immediately.",
+            moralImpact: { humility: 15, empathy: 15, responsibility: 15 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'D',
+            text: "Run away from the hare's judgment.",
+            preview: "Unable to face your contradiction, you flee.",
+            moralImpact: { responsibility: -15, wisdom: -10 },
+            nextScene: 'ending_fled_shame'
+          }
+        ]
+      },
+
+      scene3_redirected: {
+        id: 'scene3_redirected',
+        narration: `You politely suggest the fox find another teacher, perhaps someone more suited to teaching animals. The fox nods understandingly and leaves. A hare then bounds up to you. "I'll try my luck! Can you teach me music?" it asks hopefully.`,
+        question: "Another animal asks for your help. What now?",
+        choices: [
+          {
+            id: 'A',
+            text: "Redirect the hare the same way.",
+            preview: "You maintain consistency, treating all animals the same.",
+            moralImpact: { honesty: 10, fairness: 15, responsibility: 5 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'B',
+            text: "Actually try to help the hare.",
+            preview: "Something about the hare's enthusiasm changes your mind.",
+            moralImpact: { empathy: 10, fairness: -5 },
+            nextScene: 'ending_softened_heart'
+          },
+          {
+            id: 'C',
+            text: "Trick the hare—you're tired of being nice.",
+            preview: "Your patience runs out and you turn cruel.",
+            moralImpact: { honesty: -15, empathy: -15, arrogance: 10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'D',
+            text: "Stop playing music entirely.",
+            preview: "You decide the best solution is to avoid these situations altogether.",
+            moralImpact: { wisdom: 5, responsibility: 5 },
+            nextScene: 'ending_chosen_solitude'
+          }
+        ]
+      },
+
+      scene3_tired: {
+        id: 'scene3_tired',
+        narration: `You tell the fox honestly that you're exhausted from teaching the wolf. The fox understands and offers to bring you food to regain your strength. Touched by this kindness, you rest. Later, a hare appears. "The fox told me you're an excellent teacher! When you're ready, could you teach me?"`,
+        question: "After resting, do you have energy to help the hare?",
+        choices: [
+          {
+            id: 'A',
+            text: "Yes, teach the hare—you're rested now.",
+            preview: "You're recharged and ready to help again.",
+            moralImpact: { responsibility: 10, empathy: 10, fairness: 10 },
+            nextScene: 'ending_balanced_kindness'
+          },
+          {
+            id: 'B',
+            text: "Apologize but you need more rest.",
+            preview: "You're honest about your limits, even if it means saying no.",
+            moralImpact: { honesty: 15, wisdom: 10, humility: 10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'C',
+            text: "Trick the hare—teaching is too tiring.",
+            preview: "Exhaustion makes you cruel, taking the easy, mean path.",
+            moralImpact: { honesty: -15, empathy: -15, responsibility: -10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'D',
+            text: "Teach briefly, then set boundaries for the future.",
+            preview: "You help but also establish clear limits.",
+            moralImpact: { wisdom: 15, responsibility: 10, fairness: 10 },
+            nextScene: 'ending_default_not_maped'
+          }
+        ]
+      },
+
+      scene3_inconsistent: {
+        id: 'scene3_inconsistent',
+        narration: `After kindly teaching the wolf, you cruelly trick the fox for no reason. The fox cries out in pain and betrayal. The wolf, hearing the commotion, returns and sees what you've done. "How could you?!" the wolf growls. "You were so kind to me, but cruel to my friend!" A hare appears, witnessing this confrontation.`,
+        question: "The wolf is angry, the fox is trapped, and the hare is watching. What do you do?",
+        choices: [
+          {
+            id: 'A',
+            text: "Free the fox and apologize to both animals.",
+            preview: "You admit your terrible inconsistency and try to make amends.",
+            moralImpact: { humility: 20, honesty: 15, empathy: 15 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'B',
+            text: "Trick the wolf too—make it 'consistent'.",
+            preview: "You try to solve inconsistency by being consistently cruel. Terrible logic.",
+            moralImpact: { honesty: -20, wisdom: -20, arrogance: 15 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'C',
+            text: "Make excuses about why the fox deserved it.",
+            preview: "You try to justify your cruelty with lies.",
+            moralImpact: { honesty: -15, responsibility: -15, wisdom: -10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'D',
+            text: "Run away from this mess.",
+            preview: "Unable to face the consequences, you flee.",
+            moralImpact: { responsibility: -20, wisdom: -10 },
+            nextScene: 'ending_coward_flee'
+          }
+        ]
+      },
+
+      scene3_transactional: {
+        id: 'scene3_transactional',
+        narration: `You teach the fox but demand berries in payment, unlike the free help you gave the wolf. The fox reluctantly agrees and brings you berries. As you eat them, a hare appears. "I have no berries, but may I still learn?" it asks hopefully.`,
+        question: "The hare can't pay. What do you do?",
+        choices: [
+          {
+            id: 'A',
+            text: "Refuse—no payment, no teaching.",
+            preview: "You stick to your transactional approach, treating teaching as pure business.",
+            moralImpact: { fairness: -10, empathy: -10, arrogance: 10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'B',
+            text: "Teach the hare for free, realizing payment was wrong.",
+            preview: "You recognize your mistake and return to generosity.",
+            moralImpact: { humility: 15, fairness: 10, empathy: 10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'C',
+            text: "Trick the hare as 'payment' for wasting your time.",
+            preview: "You turn cruel when your greed isn't satisfied.",
+            moralImpact: { honesty: -15, empathy: -15, arrogance: 15 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'D',
+            text: "Ask what the hare can offer instead.",
+            preview: "You're flexible but still focused on getting something in return.",
+            moralImpact: { fairness: 5, arrogance: 5 },
+            nextScene: 'ending_default_not_maped'
+          }
+        ]
+      },
+
+      scene3_all_ignored: {
+        id: 'scene3_all_ignored',
+        narration: `You ignore the fox just as you ignored the wolf. Now a hare appears, full of hope. "Please, kind fiddler, won't you teach me music?" it asks. This is your third chance to connect with someone.`,
+        question: "Will you break your pattern of indifference?",
+        choices: [
+          {
+            id: 'A',
+            text: "Ignore the hare too—stay consistent.",
+            preview: "You maintain your cold indifference to everyone.",
+            moralImpact: { empathy: -15, responsibility: -10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'B',
+            text: "Finally help someone—the hare breaks through.",
+            preview: "Something about the hare's persistence touches your heart.",
+            moralImpact: { empathy: 15, humility: 10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'C',
+            text: "Trick the hare—your indifference turns to cruelty.",
+            preview: "Your coldness evolves into active harm.",
+            moralImpact: { empathy: -20, honesty: -15 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'D',
+            text: "Apologize for your earlier behavior and help.",
+            preview: "You recognize your pattern and decide to change it.",
+            moralImpact: { humility: 20, empathy: 15, wisdom: 10 },
+            nextScene: 'ending_default_not_maped'
+          }
+        ]
+      },
+
+      scene3_selective_kindness: {
+        id: 'scene3_selective_kindness',
+        narration: `You help the fox warmly after ignoring the wolf. As you teach, you feel conflicted about your selective kindness. The wolf, having followed you, watches from the bushes and sees you helping the fox. A hare then appears, asking for lessons too.`,
+        question: "The wolf has seen your unfair treatment. What do you do?",
+        choices: [
+          {
+            id: 'A',
+            text: "Acknowledge the wolf and apologize for earlier.",
+            preview: "You admit your selective kindness was wrong and try to make amends.",
+            moralImpact: { humility: 15, fairness: 15, honesty: 10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'B',
+            text: "Ignore the wolf again and help the hare.",
+            preview: "You continue your pattern of selective, unfair kindness.",
+            moralImpact: { fairness: -15, empathy: -10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'C',
+            text: "Stop helping anyone to avoid seeming unfair.",
+            preview: "You solve unfairness by helping no one—not a great solution.",
+            moralImpact: { wisdom: -5, responsibility: -5 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'D',
+            text: "Offer to teach all three animals together.",
+            preview: "You turn this into an opportunity for inclusive group learning.",
+            moralImpact: { fairness: 20, empathy: 15, wisdom: 15 },
+            nextScene: 'ending_default_not_maped'
+          }
+        ]
+      },
+
+      scene3_cruel_turn: {
+        id: 'scene3_cruel_turn',
+        narration: `After ignoring the wolf, you now trick the fox cruelly. The fox struggles in your trap as you laugh. A hare witnesses this and starts to run away in fear.`,
+        question: "The hare is fleeing. Do you chase it?",
+        choices: [
+          {
+            id: 'A',
+            text: "Chase and trick the hare too.",
+            preview: "You're now actively hunting animals to harm them.",
+            moralImpact: { empathy: -20, honesty: -15, arrogance: 15 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'B',
+            text: "Let the hare go and free the fox.",
+            preview: "The hare's fear makes you realize what you've become.",
+            moralImpact: { humility: 15, empathy: 15, wisdom: 10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'C',
+            text: "Call to the hare that you won't hurt it.",
+            preview: "You try to limit your cruelty, though you've already harmed the fox.",
+            moralImpact: { responsibility: 5, honesty: -5 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'D',
+            text: "Sit with the consequences of what you've done.",
+            preview: "You stop and reflect on your cruel actions.",
+            moralImpact: { wisdom: 10, humility: 10, responsibility: 5 },
+            nextScene: 'ending_default_not_maped'
+          }
+        ]
+      },
+
+      scene3_apology: {
+        id: 'scene3_apology',
+        narration: `You apologize to the fox for your earlier rudeness to the wolf. "I was wrong to ignore my fellow creatures," you say humbly. The fox appreciates your honesty. Together, you find the wolf and apologize to it as well. A hare then appears, having heard about your change of heart. "I hear you're teaching now with kindness," it says. "May I learn?"`,
+        question: "Your reputation is being rebuilt. How do you proceed?",
+        choices: [
+          {
+            id: 'A',
+            text: "Teach the hare with genuine kindness.",
+            preview: "You prove your change of heart is real by continuing to help.",
+            moralImpact: { empathy: 15, humility: 15, fairness: 10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'B',
+            text: "Explain you're still learning to be kind yourself.",
+            preview: "You're honest about your ongoing journey of improvement.",
+            moralImpact: { honesty: 15, humility: 15, wisdom: 10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'C',
+            text: "Teach but expect praise for your change.",
+            preview: "You help, but your ego undermines the goodness of the act.",
+            moralImpact: { empathy: 5, arrogance: 10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'D',
+            text: "Suggest all the animals learn together as a community.",
+            preview: "You create something beautiful from your earlier mistakes.",
+            moralImpact: { wisdom: 15, fairness: 15, empathy: 15, responsibility: 10 },
+            nextScene: 'ending_default_not_maped'
           }
         ]
       },
@@ -583,7 +944,92 @@ export const STORY_DATA = {
         ]
       },
 
-      // ENDINGS
+
+      //some missing scenes ---
+
+      // Missing Scene 3 variations
+      
+
+      // Scene 4 variations
+      scene4_warned_hare: {
+        id: 'scene4_warned_hare',
+        narration: `You warn the hare about trusting strangers who might trick them. The hare thanks you and leaves safely. Meanwhile, the wolf and fox manage to escape and, though angry, they appreciate that you at least didn't harm the hare. They confront you together.`,
+        question: "The wolf and fox want answers. What do you tell them?",
+        choices: [
+          {
+            id: 'A',
+            text: "Apologize sincerely for harming them.",
+            preview: "You take full responsibility for your cruel actions.",
+            moralImpact: { humility: 20, honesty: 15, empathy: 15 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'B',
+            text: "Say you were testing their trust—a lie.",
+            preview: "You make up a false excuse for your cruelty.",
+            moralImpact: { honesty: -20, wisdom: -10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'C',
+            text: "Offer to make amends through action.",
+            preview: "Words aren't enough—you'll prove change through deeds.",
+            moralImpact: { responsibility: 15, wisdom: 10, empathy: 10 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'D',
+            text: "Run away—you can't face them.",
+            preview: "Despite warning the hare, you're still too cowardly to face consequences.",
+            moralImpact: { responsibility: -15, wisdom: -10 },
+            nextScene: 'ending_coward_flee'
+          }
+        ]
+      },
+
+      scene4_fled_guilt: {
+        id: 'scene4_fled_guilt',
+        narration: `You ran away before the hare could ask, guilt weighing heavily on you. You hide in a cave, your violin beside you. The wolf and fox, now freed, track you down. "Running won't erase what you did," they say from the cave entrance.`,
+        question: "They've found you. There's nowhere left to run. What do you do?",
+        choices: [
+          {
+            id: 'A',
+            text: "Come out and face them with honesty.",
+            preview: "You finally stop running and accept accountability.",
+            moralImpact: { humility: 20, wisdom: 15, responsibility: 15 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'B',
+            text: "Try to sneak past them and keep running.",
+            preview: "You're still too afraid to face consequences.",
+            moralImpact: { responsibility: -20, wisdom: -15 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'C',
+            text: "Offer your violin as payment for your crimes.",
+            preview: "You try to buy forgiveness with possessions.",
+            moralImpact: { responsibility: 5, wisdom: -5 },
+            nextScene: 'ending_default_not_maped'
+          },
+          {
+            id: 'D',
+            text: "Break down crying and confess everything.",
+            preview: "Emotional breakdown leads to complete honest confession.",
+            moralImpact: { humility: 20, honesty: 20, empathy: 15 },
+            nextScene: 'ending_default_not_maped'
+          }
+        ]
+      },
+      
+      // ENDINGS ---
+      ending_default_not_maped:{
+        id: 'ending_default_not_maped',
+        isEnding: true,
+        endingType: 'Unexpected Ending '
+        // endingType: 'To be defined by developer..  Go to - frontend/src/data/storyData.js/ line 1030 '
+      },
 
       // ENDINGS - Complete all 8 endings
 
@@ -706,7 +1152,7 @@ export const STORY_DATA = {
             text: "Help the hare genuinely, continuing to make amends.",
             preview: "You commit to your redemptive path, helping all who ask.",
             moralImpact: { empathy: 15, honesty: 15, humility: 10 },
-            nextScene: 'ending_redemption_earned'
+            nextScene: 'ending_default_not_maped'
           },
           {
             id: 'B',
@@ -756,7 +1202,7 @@ export const STORY_DATA = {
             text: "Trick the hare—you're tired of resisting.",
             preview: "Your willpower fails and you return to harmful behavior.",
             moralImpact: { honesty: -15, responsibility: -15, wisdom: -10 },
-            nextScene: 'ending_relapse'
+            nextScene: 'ending_default_not_maped'
           },
           {
             id: 'D',
@@ -877,193 +1323,4 @@ export const STORY_DATA = {
       }
     }
   }
-};
-
-// export const STORY_DATA = {
-//   story1: {
-//     title: "The Four Learned Scholars",
-//     subtitle: "A Panchatantra Tale of Wisdom",
-//     scenes: {
-//       scene1: {
-//         id: 'scene1',
-//         narration: `Four Brahmin scholars were walking on a dusty road. They were talking excitedly about their future.
-
-//                     The first scholar said proudly,
-//                     “We know scriptures and magic very well. There is nothing we cannot do.”
-
-//                     The second scholar added,
-//                     “Yes! Kings will invite us to their palaces and respect us for our knowledge.”
-
-//                     The third scholar said confidently,
-//                     “Knowledge is the greatest power. With it, we can change the world.”
-
-//                     But you, the wisest among them, warned them gently,
-//                     “Knowledge is powerful, but wisdom is even more important. Without wisdom, knowledge can cause great harm.”
-
-//                     The first scholar laughed and ignored your words.
-//                     “You always warn us,” he said. “Brave people get success!”`,
-
-//         question: "The first scholar says, 'Fortune favors the bold!' How do you respond?",
-//         choices: [
-//           {
-//             id: 'A',
-//             text: "You're right! Let's use our knowledge fearlessly!",
-//             preview: "You encourage their reckless confidence. The group becomes more emboldened, dismissing caution entirely.",
-//             moralImpact: { arrogance: 15, wisdom: -15, humility: -10 },
-//             nextScene: 'scene2'
-//           },
-//           {
-//             id: 'B',
-//             text: "Boldness is good, but we must balance it with caution.",
-//             preview: "You offer a measured perspective. Your friends consider your words, though their excitement remains high.",
-//             moralImpact: { wisdom: 10, humility: 10, arrogance: -5 },
-//             nextScene: 'scene2'
-//           },
-//           {
-//             id: 'C',
-//             text: "Knowledge is powerful, but only when used wisely.",
-//             preview: "You emphasize wisdom over raw power. Some scholars nod thoughtfully, though others seem impatient.",
-//             moralImpact: { wisdom: 15, responsibility: 10, humility: 10 },
-//             nextScene: 'scene2'
-//           },
-//           {
-//             id: 'D',
-//             text: "Say nothing and continue walking.",
-//             preview: "You remain silent, avoiding confrontation. The scholars continue their boastful conversation unchecked.",
-//             moralImpact: {},
-//             nextScene: 'scene2'
-//           }
-//         ]
-//       },
-//       scene2: {
-//         id: 'scene2',
-//         narration: `As you walked deeper into the forest, you came across the bones of a powerful lion.
-//                     The eyes of your companions shone with excitement.
-//                     “Look! This is the perfect chance to show our skills.
-//                     We will bring this lion back to life!” said the second scholar.
-//                     “Just imagine how amazed everyone will be!” added the third scholar eagerly.
-//                     A cold fear slowly passed through your body.`,
-
-//         question: "The second scholar suggests reviving the lion. What do you do?",
-//         choices: [
-//           {
-//             id: 'A',
-//             text: "This is an excellent opportunity! Let's proceed!",
-//             preview: "You join their enthusiasm, ignoring the obvious danger. The group begins preparations immediately.",
-//             moralImpact: { arrogance: 15, riskAwareness: -15, wisdom: -10 },
-//             nextScene: 'scene3'
-//           },
-//           {
-//             id: 'B',
-//             text: "Wait—reviving a predator is extremely dangerous!",
-//             preview: "You voice your strong concern about the life-threatening risk. The scholars pause, but their desire to demonstrate their power remains strong.",
-//             moralImpact: { riskAwareness: 15, wisdom: 15, responsibility: 10 },
-//             nextScene: 'scene3'
-//           },
-//           {
-//             id: 'C',
-//             text: "Let me think about the consequences first...",
-//             preview: "You ask for time to consider. Your cautious approach annoys some, but plants seeds of doubt in others.",
-//             moralImpact: { wisdom: 10, humility: 10, riskAwareness: 10 },
-//             nextScene: 'scene3'
-//           },
-//           {
-//             id: 'D',
-//             text: "Stand aside and let them decide.",
-//             preview: "You step back, avoiding responsibility. The scholars take your silence as tacit approval.",
-//             moralImpact: { responsibility: -15 },
-//             nextScene: 'scene3'
-//           }
-//         ]
-//       },
-//       scene3: {
-//         id: 'scene3',
-//         narration: `The scholars ignored your concerns and began preparing the ritual. The first scholar started chanting ancient verses. "You're being a coward!" one of them mocked. "What use is knowledge if we don't apply it?" The skeletal pieces began to tremble and move together.`,
-//         question: "They call you a coward. How do you respond?",
-//         choices: [
-//           {
-//             id: 'A',
-//             text: "Fine! I'll help you revive it to prove I'm not a coward!",
-//             preview: "Pride takes over. You join the ritual, abandoning your better judgment to save face.",
-//             moralImpact: { arrogance: 15, wisdom: -15, riskAwareness: -15, humility: -10 },
-//             nextScene: 'scene4'
-//           },
-//           {
-//             id: 'B',
-//             text: "I refuse to participate in this madness. I'm climbing that tree!",
-//             preview: "You reject their mockery and prioritize survival. You quickly move toward the nearest tall tree.",
-//             moralImpact: { wisdom: 15, riskAwareness: 15, responsibility: 10 },
-//             nextScene: 'scene4'
-//           },
-//           {
-//             id: 'C',
-//             text: "Please, reconsider! This will end in tragedy!",
-//             preview: "You make an emotional appeal, showing genuine care for their safety despite their insults.",
-//             moralImpact: { empathy: 15, responsibility: 10, wisdom: 10 },
-//             nextScene: 'scene4'
-//           },
-//           {
-//             id: 'D',
-//             text: "Say nothing and stay on the ground.",
-//             preview: "Paralyzed by fear or indecision, you neither help nor save yourself. A dangerous position.",
-//             moralImpact: { wisdom: -10, riskAwareness: -10 },
-//             nextScene: 'scene4'
-//           }
-//         ]
-//       },
-//       scene4: {
-//         id: 'scene4',
-//         narration: `The ritual was nearly complete. The lion's skeletal frame was now covered in flesh and fur, appearing as if merely asleep. The third scholar raised his hands dramatically. "And now, the breath of life!" This was your last chance to act.`,
-//         question: "This is your final moment. What do you do?",
-//         choices: [
-//           {
-//             id: 'A',
-//             text: "Join them in the spell to show solidarity.",
-//             preview: "You abandon wisdom entirely, choosing loyalty over survival. A fatal mistake.",
-//             moralImpact: { arrogance: 15, riskAwareness: -15, wisdom: -15 },
-//             nextScene: 'ending_death'
-//           },
-//           {
-//             id: 'B',
-//             text: "Climb the tree immediately to save yourself.",
-//             preview: "You act decisively to preserve your life, though it means watching your friends face danger.",
-//             moralImpact: { riskAwareness: 15, wisdom: 15, responsibility: 10 },
-//             nextScene: 'ending_survival'
-//           },
-//           {
-//             id: 'C',
-//             text: "Make one final desperate plea to stop them.",
-//             preview: "You try one last time to save everyone. Whether they listen depends on your previous influence.",
-//             moralImpact: { empathy: 15, responsibility: 15, duty: 10 },
-//             nextScene: 'ending_conditional'
-//           },
-//           {
-//             id: 'D',
-//             text: "Freeze in fear and do nothing.",
-//             preview: "Terror paralyzes you. You can neither flee nor intervene. A fatal inaction.",
-//             moralImpact: { riskAwareness: -15, responsibility: -15 },
-//             nextScene: 'ending_death'
-//           }
-//         ]
-//       },
-//       ending_survival: {
-//         id: 'ending_survival',
-//         narration: `You quickly climbed the tall tree, your hands scraping against the rough bark. Below, the final spell was cast. The lion's eyes snapped open, and it let out a deafening roar. Horror replaced the scholars' excitement as the beast sprang to life. "By the gods…" whispered the first scholar, his voice trembling. Before they could react, the lion pounced. Their terrified screams echoed through the forest before falling silent. From your perch, you watched in deep sorrow. Tears streamed down your face as you witnessed the terrible cost of their arrogance. After the lion departed, you descended slowly and cast a final glance at your fallen friends. "Knowledge without wisdom is a sword without a hilt—deadly to the one who wields it," you murmured, walking away with a lesson learned at a terrible price.`,
-//         isEnding: true,
-//         endingType: 'survival'
-//       },
-//       ending_death: {
-//         id: 'ending_death',
-//         narration: `The final spell was cast, and the lion's eyes blazed with life. It rose with a thunderous roar, its predatory instincts immediately taking over. You stood frozen with your companions, realizing too late the magnitude of your mistake. "What have we done?" someone whispered. The lion's gaze fixed on you all—easy prey. Your screams joined those of your friends as the beast attacked. In your final moments, you understood the truth you had ignored: knowledge without wisdom leads not to glory, but to destruction. The forest fell silent once more, claiming four more victims of arrogance.`,
-//         isEnding: true,
-//         endingType: 'death'
-//       },
-//       ending_conditional: {
-//         id: 'ending_conditional',
-//         narration: `"STOP! I BEG YOU!" you cried out with every ounce of passion. "Our knowledge was meant to serve life, not to play with death! Is proving our power worth our lives?" Your words rang through the clearing. The third scholar's hands trembled, the spell incomplete. For a moment, time seemed to stop. Then, slowly, he lowered his hands. "Perhaps... perhaps you are right," he said quietly. The others looked ashamed. The assembled lion remained lifeless—a reminder of what could have been. You all stood in silence, then quietly left the forest together, humbled and alive. On the journey home, the first scholar spoke: "Today, you saved us all. Forgive our arrogance." You nodded. "Knowledge without wisdom is dangerous. But wisdom can still guide us—if we let it." The four of you walked on, forever changed by what you almost unleashed.`,
-//         isEnding: true,
-//         endingType: 'prevention'
-//       }
-//     }
-//   }
-// };
+}
