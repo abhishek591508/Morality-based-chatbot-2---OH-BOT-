@@ -80,7 +80,7 @@ export const generateExcelReport = async (req, res) => {
           cell.fill = {
             type: 'pattern',
             pattern: 'solid',
-            fgColor: { argb: 'FF4CAF50' } // Yellow
+            fgColor: { argb: 'FFBFFFD0' } // light green
           };
         } else {
           cell.fill = {
@@ -91,6 +91,10 @@ export const generateExcelReport = async (req, res) => {
         }
         
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
+        cell.border = {
+          top:{style:'thin', color:{argb:'FF9e9e9e'}}, 
+          left:{style:'thin', color:{argb:'ff9e9e9e'}}, 
+        }
       }
     }
 
