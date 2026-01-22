@@ -124,6 +124,13 @@ export const STORY_DATA = {
             preview: "You suggest finding a safer alternative.",
             moralImpact: { wisdom: 20, responsibility: 18, humility: 15, honesty: 15, fairness: 15, duty: 18, riskAwareness: 18, arrogance: -15, empathy: 18},
             nextScene: 'scene3c'
+          },
+          {
+            id: 'D',
+            text: "Do nothing.",
+            preview: "You step back not taking responsibility.",
+            moralImpact: {wisdom:-10, responsibility:-25, arrogance: -5, fairness: -10, duty: -25, honesty: 5, empathy: -10, riskAwareness: 0},
+            nextScene: 'scene3a'
           }
         ]
       },
@@ -158,6 +165,13 @@ export const STORY_DATA = {
             preview: "You share a wise saying with them.",
             moralImpact: { wisdom: 22, responsibility: 18, humility: 18, honesty: 15, fairness: 15, duty: 18, riskAwareness: 18, arrogance: -20, empathy: 15},
             nextScene: 'scene3e'
+          },
+          {
+            id: 'D',
+            text: "Do nothing.",
+            preview: "You step back not taking responsibility.",
+            moralImpact: {wisdom:-10, responsibility:-25, arrogance: -5, fairness: -10, duty: -25, honesty: 5, empathy: -10, riskAwareness: 0},
+            nextScene: 'scene3a'
           }
         ]
       },
@@ -280,6 +294,13 @@ export const STORY_DATA = {
             preview: "You let them choose while removing yourself from the situation.",
             moralImpact: { wisdom: 14, responsibility: -8, humility: 12, honesty: 14, fairness: 14, duty: -8, riskAwareness: 14, arrogance: -8, empathy: 10},
             nextScene: 'scene4b'
+          },
+          {
+            id: 'D',
+            text: "Do nothing.",
+            preview: "You step back not taking responsibility.",
+            moralImpact: {wisdom:-10, responsibility:-25, arrogance: -5, fairness: -10, duty: -25, honesty: 5, empathy: -10, riskAwareness: 0},
+            nextScene: 'scene3a'
           }
         ]
       },
@@ -316,6 +337,13 @@ export const STORY_DATA = {
             preview: "You decide to remove yourself and let them choose their own fate.",
             moralImpact: { wisdom: 16, responsibility: -12, humility: 10, honesty: 12, fairness: 10, duty: -12, riskAwareness: 18, arrogance: 5, empathy: -12},
             nextScene: 'ending_conditional'
+          },
+           {
+            id: 'D',
+            text: "Do nothing.",
+            preview: "You step back not taking responsibility.",
+            moralImpact: {wisdom:-10, responsibility:-25, arrogance: -5, fairness: -10, duty: -25, honesty: 5, empathy: -10, riskAwareness: 0},
+            nextScene: 'scene3a'
           }
         ]
       },
@@ -352,6 +380,13 @@ export const STORY_DATA = {
             preview: "You praise their growth and learning.",
             moralImpact: { wisdom: 20, responsibility: 20, humility: 22, honesty: 18, fairness: 16, duty: 20, riskAwareness: 18, arrogance: -20, empathy: 24},
             nextScene: 'ending_wisdom'
+          },
+          {
+            id: 'D',
+            text: "Do nothing.",
+            preview: "You do not care about.",
+            moralImpact: {wisdom:-10, responsibility:-25, arrogance: -5, fairness: -10, duty: -25, honesty: 5, empathy: -10, riskAwareness: 0},
+            nextScene: 'scene5a'
           }
         ]
       },
@@ -433,6 +468,13 @@ export const STORY_DATA = {
             preview: "You respect their choice while distancing yourself from it.",
             moralImpact: { wisdom: 16, responsibility: -10, humility: 14, honesty: 16, fairness: 14, duty: -10, riskAwareness: 16, arrogance: -8, empathy: 14},
             nextScene: 'scene5b'
+          },
+          {
+            id: 'D',
+            text: "Do nothing.",
+            preview: "You step back not taking responsibility.",
+            moralImpact: {wisdom:-10, responsibility:-25, arrogance: -5, fairness: -10, duty: -25, honesty: 5, empathy: -10, riskAwareness: 0},
+            nextScene: 'scene5b'
           }
         ]
       },
@@ -468,6 +510,13 @@ export const STORY_DATA = {
             text: "The most important lesson is that friendship means telling people the truth.",
             preview: "You emphasize the value of true friendship.",
             moralImpact: { wisdom: 24, responsibility: 24, humility: 20, honesty: 24, fairness: 20, duty: 24, riskAwareness: 20, arrogance: -22, empathy: 26},
+            nextScene: 'ending_survival'
+          },
+           {
+            id: 'D',
+            text: "None of the above.",
+            preview: "You do not agree with above morals of the story.",
+            moralImpact: {wisdom:-10, responsibility:-25, arrogance: -5, fairness: -10, duty: -25, honesty: 5, empathy: -10, riskAwareness: 0},
             nextScene: 'ending_survival'
           }
         ]
