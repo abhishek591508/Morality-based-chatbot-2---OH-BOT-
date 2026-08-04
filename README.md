@@ -2,6 +2,16 @@
 
 **Developed during internship at IIT Mandi, currently being used for data collection purpose.**
 
+### Post-choice projection + RAG
+
+After each choice, players see:
+
+1. **Score changes** — which moral traits went up/down (deterministic from `moralImpact`)
+2. **Ending lean** — soft rule-based trajectory label (not a final result)
+3. **AI insight** — Groq Llama + trait-tagged retrieval explains the choice and offers a labeled speculative forecast
+
+Setup: add `GROQ_API_KEY` (and optional `GROQ_MODEL`) to `backend/.env`. See [backend/README.md](backend/README.md). Without a key, the UI still works using fallback text.
+
 <img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/0f91dc25-6fff-4fd5-afe4-6ea3e498a37d" />
 
 ---

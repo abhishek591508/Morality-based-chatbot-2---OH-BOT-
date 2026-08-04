@@ -1,66 +1,74 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import WelcomeScreen from './components/WelcomeScreen';
 import UsernameInput from './components/UsernameInput';
 import StorySelection from './components/StorySelection';
 import GameScreen from './components/GameScreen';
 import ResultsScreen from './components/ResultsScreen';
+import ChoiceProjection from './components/ChoiceProjection';
 import { STORY_DATA } from './data/storyData';
 import { 
   getInitialScores, 
   updateMoralScores, 
   generateFeedback,
-  determineConditionalEnding 
+  determineConditionalEnding,
+  getScoreDeltas,
+  projectEndingLean
 } from './utils/moralCalculations';
 import { saveGameData } from './utils/database';
+import { fetchChoiceFeedback } from './utils/rag';
 import './App.css';
 
 function App() {
-  // Game state: welcome, username, storySelect, playing, results
+  // Game state: welcome, username, storySelect, playing, projecting, results
   const [gameState, setGameState] = useState('welcome');
   const [username, setUsername] = useState('');
-  const [selectedStory, setSelectedStory] = useState('story1'); // Default to story1 for backward compatibility
+  const [selectedStory, setSelectedStory] = useState('story1');
   const [currentScene, setCurrentScene] = useState('scene1');
   const [moralScores, setMoralScores] = useState(getInitialScores());
   const [decisionHistory, setDecisionHistory] = useState([]);
   const [sceneNumber, setSceneNumber] = useState(1);
 
-  // Handle start button from welcome screen
+  // Post-choice projection state
+  const [projection, setProjection] = useState(null);
+  const [ragLoading, setRagLoading] = useState(false);
+  const [ragFeedback, setRagFeedback] = useState(null);
+  const ragRequestIdRef = useRef(0);
+
+  const clearProjection = () => {
+    ragRequestIdRef.current += 1; // invalidate in-flight RAG
+    setProjection(null);
+    setRagLoading(false);
+    setRagFeedback(null);
+  };
+
   const handleStart = () => {
     setGameState('username');
   };
 
-  // Handle username submission - now goes to story selection
   const handleUsernameSubmit = (name) => {
     setUsername(name);
-    // Check if we have multiple stories
     const storyCount = Object.keys(STORY_DATA).length;
     if (storyCount > 1) {
-      // Multiple stories available - show selection screen
       setGameState('storySelect');
     } else {
-      // Only one story - go directly to playing
       setSelectedStory('story1');
       setGameState('playing');
     }
   };
 
-  // Handle story selection
   const handleStorySelect = (storyId) => {
     setSelectedStory(storyId);
     setCurrentScene('scene1');
     setGameState('playing');
   };
 
-  // Handle choice selection during gameplay
-  const handleChoiceSelect = (choice) => {
-    //increase sceneNumber
-    setSceneNumber(prev => prev + 1);
+  // Pause on projection before advancing the scene
+  const handleChoiceSelect = async (choice) => {
+    setSceneNumber((prev) => prev + 1);
 
-    // Update moral scores
     const newScores = updateMoralScores(moralScores, choice.moralImpact);
     setMoralScores(newScores);
 
-    // Record decision
     const newHistory = [
       ...decisionHistory,
       {
@@ -71,76 +79,126 @@ function App() {
     ];
     setDecisionHistory(newHistory);
 
-    // Determine next scene
     let nextScene = choice.nextScene;
-    
-    // Handle conditional ending (currently only for story1)
     if (selectedStory === 'story1' && choice.nextScene === 'ending_conditional') {
       nextScene = determineConditionalEnding(newScores);
     }
 
-    setCurrentScene(nextScene);
-
-    // Check if ending
     const nextSceneData = STORY_DATA[selectedStory].scenes[nextScene];
+    const scoreDeltas = getScoreDeltas(choice.moralImpact);
+    const endingLean = projectEndingLean(selectedStory, newScores);
+
+    setProjection({
+      choiceText: choice.text,
+      choicePreview: choice.preview,
+      scoreDeltas,
+      moralScores: newScores,
+      endingLean,
+      pending: {
+        nextScene,
+        nextSceneData,
+        newScores,
+        newHistory
+      }
+    });
+    setRagFeedback(null);
+    setRagLoading(true);
+    setGameState('projecting');
+
+    const requestId = ++ragRequestIdRef.current;
+    const feedback = await fetchChoiceFeedback({
+      username,
+      storyId: selectedStory,
+      storyTitle: STORY_DATA[selectedStory].title,
+      sceneId: currentScene,
+      choiceText: choice.text,
+      choicePreview: choice.preview,
+      moralImpact: choice.moralImpact,
+      updatedScores: newScores,
+      endingLean
+    });
+
+    // Ignore stale responses if user already continued
+    if (requestId !== ragRequestIdRef.current) return;
+
+    if (feedback) {
+      setRagFeedback(feedback);
+    } else {
+      setRagFeedback({
+        choiceLine:
+          choice.preview ||
+          'This choice updates your moral scores based on the values it emphasizes.',
+        endingForecast: endingLean
+          ? `Based on your current scores, you appear ${endingLean.toLowerCase()}. Later choices can still change this.`
+          : 'Your later choices will continue to shape how this story may end.',
+        sources: [],
+        usedFallback: true
+      });
+    }
+    setRagLoading(false);
+  };
+
+  const handleProjectionContinue = async () => {
+    if (!projection?.pending) return;
+
+    const { nextScene, nextSceneData, newScores, newHistory } = projection.pending;
+    setCurrentScene(nextScene);
+    clearProjection();
+
     if (nextSceneData?.isEnding) {
-      setTimeout(async () => {
-        setGameState('results');
-        // Save to database
-        await saveGameData({
-          username,
-          storyId: selectedStory,
-          storyTitle: STORY_DATA[selectedStory].title,
-          moralScores: newScores,
-          decisionHistory: newHistory,
-          endingType: nextSceneData.endingType,
-          timestamp: new Date().toISOString()
-        });
-      }, 100);
+      setGameState('results');
+      await saveGameData({
+        username,
+        storyId: selectedStory,
+        storyTitle: STORY_DATA[selectedStory].title,
+        moralScores: newScores,
+        decisionHistory: newHistory,
+        endingType: nextSceneData.endingType,
+        timestamp: new Date().toISOString()
+      });
+    } else {
+      setGameState('playing');
     }
   };
 
-  // Handle play again - reset everything
   const handleReStart = () => {
     setGameState('username');
     setUsername('');
-    setSelectedStory('story1'); // Reset to default
+    setSelectedStory('story1');
     setCurrentScene('scene1');
     setMoralScores(getInitialScores());
     setDecisionHistory([]);
     setSceneNumber(1);
+    clearProjection();
   };
+
   const handlePlayAgain = () => {
     setGameState('playing');
     setCurrentScene('scene1');
     setMoralScores(getInitialScores());
     setDecisionHistory([]);
     setSceneNumber(1);
+    clearProjection();
   };
 
-  // Get current story and scene data
   const currentStoryData = STORY_DATA[selectedStory];
   const currentSceneData = currentStoryData ? currentStoryData.scenes[currentScene] : null;
   const feedback = generateFeedback(moralScores);
 
   return (
     <div className="app">
-      {/* Welcome Screen */}
       {gameState === 'welcome' && (
         <WelcomeScreen onStart={handleStart} />
       )}
       
-      {/* Username Input Screen */}
       {gameState === 'username' && (
         <UsernameInput onSubmit={handleUsernameSubmit} />
       )}
 
-      {/* Story Selection Screen (NEW) */}
       {gameState === 'storySelect' && (
         <StorySelection onSelectStory={handleStorySelect} />
       )}
       
-      {/* Game Playing Screen */}
       {gameState === 'playing' && currentSceneData && (
         <GameScreen
           username={username}
@@ -150,8 +208,19 @@ function App() {
           sceneNumber={sceneNumber}
         />
       )}
+
+      {gameState === 'projecting' && projection && (
+        <ChoiceProjection
+          choiceText={projection.choiceText}
+          scoreDeltas={projection.scoreDeltas}
+          moralScores={projection.moralScores}
+          endingLean={projection.endingLean}
+          ragLoading={ragLoading}
+          ragFeedback={ragFeedback}
+          onContinue={handleProjectionContinue}
+        />
+      )}
       
-      {/* Results Screen */}
       {gameState === 'results' && currentSceneData && (
         <ResultsScreen
           username={username}

@@ -1,0 +1,352 @@
+[
+  {
+    "id": "s1-wisdom-knowledge",
+    "text": "In Panchatantra tales, knowledge without wisdom is dangerous. Scholars who can revive a lion still need judgment about whether they should. Skill answers 'can we?'; wisdom asks 'should we?'",
+    "source": "Panchatantra theme note: wisdom vs knowledge",
+    "storyIds": ["story1"],
+    "traits": ["wisdom", "riskAwareness", "responsibility"]
+  },
+  {
+    "id": "s1-arrogance-pride",
+    "text": "Arrogance blinds people to risk. When pride says 'we are the greatest,' caution sounds like weakness. Folktales often punish this hubris with consequences the proud never imagined.",
+    "source": "Panchatantra theme note: arrogance",
+    "storyIds": ["story1"],
+    "traits": ["arrogance", "humility", "wisdom"]
+  },
+  {
+    "id": "s1-humility-listen",
+    "text": "Humility means staying open to warning, even when companions mock caution. The humble voice in the group may prevent disaster that confidence alone cannot foresee.",
+    "source": "Panchatantra theme note: humility",
+    "storyIds": ["story1"],
+    "traits": ["humility", "wisdom", "empathy"]
+  },
+  {
+    "id": "s1-risk-lion",
+    "text": "Bringing a predator back to life is a classic risk-assessment failure: the experiment may succeed technically and still destroy the experimenters. Risk awareness treats foreseeable harm as real, not hypothetical.",
+    "source": "Moral education note: risk awareness",
+    "storyIds": ["story1"],
+    "traits": ["riskAwareness", "wisdom", "responsibility"]
+  },
+  {
+    "id": "s1-responsibility-speak",
+    "text": "Responsibility is not only avoiding harm yourself; it includes speaking up when others rush toward danger. Silence can be a moral choice that abandons duty to protect.",
+    "source": "Moral education note: responsibility",
+    "storyIds": ["story1", "story2"],
+    "traits": ["responsibility", "duty", "honesty"]
+  },
+  {
+    "id": "s1-duty-warn",
+    "text": "Duty toward companions can mean opposing them. Loyalty without moral courage enables harm. In moral stories, the dutiful friend warns even when warning costs status in the group.",
+    "source": "Moral education note: duty",
+    "storyIds": ["story1"],
+    "traits": ["duty", "responsibility", "honesty"]
+  },
+  {
+    "id": "s1-empathy-harm",
+    "text": "Empathy asks who will suffer if this plan succeeds. Reviving a lion is not only about the scholars' glory; it risks villagers, travelers, and the scholars themselves.",
+    "source": "Moral education note: empathy",
+    "storyIds": ["story1"],
+    "traits": ["empathy", "responsibility", "fairness"]
+  },
+  {
+    "id": "s1-honesty-doubt",
+    "text": "Honesty includes naming fear and doubt instead of performing false bravado. Admitting 'this feels wrong' is often wiser than pretending certainty.",
+    "source": "Moral education note: honesty",
+    "storyIds": ["story1", "story2"],
+    "traits": ["honesty", "humility", "wisdom"]
+  },
+  {
+    "id": "s1-fairness-power",
+    "text": "Fairness questions whether using power for spectacle is just. Knowledge used to impress kings while endangering the powerless fails a fairness test.",
+    "source": "Moral education note: fairness",
+    "storyIds": ["story1"],
+    "traits": ["fairness", "responsibility", "humility"]
+  },
+  {
+    "id": "s1-prevention-ending",
+    "text": "A prevention ending rewards persuasion and foresight: tragedy avoided because someone insisted on caution before irreversible action. High wisdom with empathy or responsibility often points this way.",
+    "source": "Story design note: prevention trajectory",
+    "storyIds": ["story1"],
+    "traits": ["wisdom", "empathy", "responsibility"]
+  },
+  {
+    "id": "s1-tragic-ending",
+    "text": "A tragic ending follows when warnings are ignored and arrogance outruns risk awareness. The story teaches that cleverness cannot cancel consequence.",
+    "source": "Story design note: tragic trajectory",
+    "storyIds": ["story1"],
+    "traits": ["arrogance", "riskAwareness", "wisdom"]
+  },
+  {
+    "id": "s1-survival-ending",
+    "text": "Survival endings often come from partial wisdom: enough caution to escape, not always enough to prevent all harm. They sit between prevention and tragedy.",
+    "source": "Story design note: survival trajectory",
+    "storyIds": ["story1"],
+    "traits": ["riskAwareness", "responsibility", "wisdom"]
+  },
+  {
+    "id": "s1-silence-cost",
+    "text": "Choosing silence when danger is clear often lowers responsibility and duty. In moral tales, bystanders who say nothing share in the outcome.",
+    "source": "Moral education note: silence and duty",
+    "storyIds": ["story1", "story2"],
+    "traits": ["responsibility", "duty", "empathy"]
+  },
+  {
+    "id": "s1-boldness-balance",
+    "text": "Boldness without caution is recklessness; caution without any courage can become inaction. Balanced choices raise wisdom and risk awareness together.",
+    "source": "Moral education note: courage and caution",
+    "storyIds": ["story1"],
+    "traits": ["wisdom", "riskAwareness", "humility"]
+  },
+  {
+    "id": "s1-peer-pressure",
+    "text": "Group excitement can suppress individual judgment. Moral strength sometimes means refusing a plan the majority celebrates.",
+    "source": "Moral education note: peer influence",
+    "storyIds": ["story1", "story2"],
+    "traits": ["wisdom", "humility", "responsibility"]
+  },
+  {
+    "id": "s1-foresight",
+    "text": "Foresight is imagining the second and third consequences of an act, not only the first thrill of success. Wisdom grows when players pause before irreversible steps.",
+    "source": "Moral education note: foresight",
+    "storyIds": ["story1"],
+    "traits": ["wisdom", "riskAwareness", "responsibility"]
+  },
+  {
+    "id": "s1-ego-glory",
+    "text": "Seeking glory through dangerous magic elevates arrogance and lowers humility. Tales repeatedly show that fame-seeking without care for harm leads to ruin.",
+    "source": "Panchatantra theme note: glory seeking",
+    "storyIds": ["story1"],
+    "traits": ["arrogance", "humility", "honesty"]
+  },
+  {
+    "id": "s1-oppose-plan",
+    "text": "Strong opposition to a dangerous plan signals high responsibility and risk awareness. Moral courage is measured by willingness to be disliked for telling the truth.",
+    "source": "Moral education note: moral courage",
+    "storyIds": ["story1"],
+    "traits": ["responsibility", "riskAwareness", "duty"]
+  },
+  {
+    "id": "s1-think-carefully",
+    "text": "Asking for time to think is itself a wise act. Reflection interrupts impulsive group momentum and creates space for better judgment.",
+    "source": "Moral education note: reflective pause",
+    "storyIds": ["story1", "story2"],
+    "traits": ["wisdom", "humility", "riskAwareness"]
+  },
+  {
+    "id": "s1-step-back",
+    "text": "Stepping back and letting others decide alone can protect the self yet abandon shared responsibility. Escape from blame is not the same as ethical action.",
+    "source": "Moral education note: avoiding responsibility",
+    "storyIds": ["story1", "story2"],
+    "traits": ["responsibility", "duty", "empathy"]
+  },
+  {
+    "id": "s2-honesty-tricks",
+    "text": "In tales of tricksters, cleverness that harms others is not virtue. Honesty means refusing to treat living beings as tools for amusement or gain.",
+    "source": "Folk motif note: trickster honesty",
+    "storyIds": ["story2"],
+    "traits": ["honesty", "empathy", "fairness"]
+  },
+  {
+    "id": "s2-deception-cost",
+    "text": "Deception may win a moment of advantage, but forest tales often return the cost later through lost trust, retaliation, or shame. Consequences track the trick.",
+    "source": "Folk motif note: deception and consequence",
+    "storyIds": ["story2"],
+    "traits": ["honesty", "arrogance", "responsibility"]
+  },
+  {
+    "id": "s2-redemption",
+    "text": "Redemption requires more than apology: changed behavior, amends, and facing those harmed. Weak apologies without courage lean away from true redemption.",
+    "source": "Moral education note: redemption",
+    "storyIds": ["story2"],
+    "traits": ["honesty", "responsibility", "humility"]
+  },
+  {
+    "id": "s2-kindness",
+    "text": "Kindness is choosing care when cleverness would be easier. Music and wit can heal or harm depending on whether empathy guides them.",
+    "source": "Moral education note: kindness",
+    "storyIds": ["story2"],
+    "traits": ["empathy", "fairness", "honesty"]
+  },
+  {
+    "id": "s2-consequence",
+    "text": "A consequence ending teaches that harmed parties may refuse forgiveness. When empathy and honesty stay low, the story leans toward deserved consequence.",
+    "source": "Story design note: consequence trajectory",
+    "storyIds": ["story2"],
+    "traits": ["honesty", "empathy", "arrogance"]
+  },
+  {
+    "id": "s2-forgiveness",
+    "text": "Forgiveness in moral stories is earned through sincere accountability, not demanded. Victims may grant mercy when they see real change.",
+    "source": "Moral education note: forgiveness",
+    "storyIds": ["story2"],
+    "traits": ["humility", "honesty", "empathy"]
+  },
+  {
+    "id": "s2-cowardice",
+    "text": "Fleeing shame instead of facing it adds cowardice to earlier harm. Courage to make amends is part of moral repair.",
+    "source": "Moral education note: facing consequences",
+    "storyIds": ["story2"],
+    "traits": ["responsibility", "honesty", "humility"]
+  },
+  {
+    "id": "s2-empathy-animals",
+    "text": "Seeing animals as beings with feelings, not props for a joke, raises empathy and fairness. Cruel cleverness treats others as lesser.",
+    "source": "Moral education note: empathy for others",
+    "storyIds": ["story2"],
+    "traits": ["empathy", "fairness", "honesty"]
+  },
+  {
+    "id": "s2-arrogance-clever",
+    "text": "Pride in one's own cleverness often excuses cruelty. Arrogance says 'they deserved the trick'; humility asks what the trick cost them.",
+    "source": "Moral education note: clever arrogance",
+    "storyIds": ["story2"],
+    "traits": ["arrogance", "humility", "empathy"]
+  },
+  {
+    "id": "s2-duty-amends",
+    "text": "Duty after harm means returning to repair what was broken. Walking away protects comfort; staying to make amends protects integrity.",
+    "source": "Moral education note: duty after harm",
+    "storyIds": ["story2"],
+    "traits": ["duty", "responsibility", "honesty"]
+  },
+  {
+    "id": "s2-risk-reputation",
+    "text": "Risk awareness in social morality includes reputational and relational risk: tricks that seem safe can destroy belonging and safety later.",
+    "source": "Moral education note: social risk",
+    "storyIds": ["story2"],
+    "traits": ["riskAwareness", "wisdom", "responsibility"]
+  },
+  {
+    "id": "s2-balanced-path",
+    "text": "A balanced path combines honesty with kindness: neither pure self-punishment nor denial. Growth comes from owning harm and choosing better acts next.",
+    "source": "Story design note: balanced trajectory",
+    "storyIds": ["story2"],
+    "traits": ["honesty", "empathy", "wisdom"]
+  },
+  {
+    "id": "s2-false-redemption",
+    "text": "False redemption looks like change but keeps the old pattern underneath. Without honesty, apologies become another performance.",
+    "source": "Story design note: false redemption",
+    "storyIds": ["story2"],
+    "traits": ["honesty", "arrogance", "humility"]
+  },
+  {
+    "id": "s2-solitude",
+    "text": "Choosing solitude after harm can be reflection or escape. Moral growth needs eventual return to relationship with integrity, not only self-exile.",
+    "source": "Moral education note: solitude and growth",
+    "storyIds": ["story2"],
+    "traits": ["responsibility", "humility", "empathy"]
+  },
+  {
+    "id": "s2-mercy",
+    "text": "Mercy received is different from mercy demanded. When victims choose mercy, it often follows visible humility and honest admission of wrong.",
+    "source": "Moral education note: mercy",
+    "storyIds": ["story2"],
+    "traits": ["humility", "honesty", "empathy"]
+  },
+  {
+    "id": "gen-wisdom-def",
+    "text": "Wisdom is practical moral judgment: weighing outcomes, limits, and timing. It grows when choices favor foresight over impulse.",
+    "source": "Trait glossary: wisdom",
+    "storyIds": ["story1", "story2"],
+    "traits": ["wisdom"]
+  },
+  {
+    "id": "gen-empathy-def",
+    "text": "Empathy is attending to others' feelings and stakes. Choices that protect or respect others raise empathy; choices that treat others as tools lower it.",
+    "source": "Trait glossary: empathy",
+    "storyIds": ["story1", "story2"],
+    "traits": ["empathy"]
+  },
+  {
+    "id": "gen-fairness-def",
+    "text": "Fairness asks whether benefits and harms are justly distributed. Exploiting the vulnerable for gain fails fairness.",
+    "source": "Trait glossary: fairness",
+    "storyIds": ["story1", "story2"],
+    "traits": ["fairness"]
+  },
+  {
+    "id": "gen-duty-def",
+    "text": "Duty is obligation to roles and relationships—friend, traveler, maker of amends. Neglecting duty often looks like convenience.",
+    "source": "Trait glossary: duty",
+    "storyIds": ["story1", "story2"],
+    "traits": ["duty"]
+  },
+  {
+    "id": "gen-honesty-def",
+    "text": "Honesty is truthfulness with others and with oneself. It includes admitting motives, fear, and harm rather than hiding behind clever stories.",
+    "source": "Trait glossary: honesty",
+    "storyIds": ["story1", "story2"],
+    "traits": ["honesty"]
+  },
+  {
+    "id": "gen-humility-def",
+    "text": "Humility is openness to correction and limits. It counters arrogance by valuing caution and learning over ego.",
+    "source": "Trait glossary: humility",
+    "storyIds": ["story1", "story2"],
+    "traits": ["humility"]
+  },
+  {
+    "id": "gen-responsibility-def",
+    "text": "Responsibility is owning outcomes and acting to prevent or repair harm. Avoidance and blame-shifting lower it.",
+    "source": "Trait glossary: responsibility",
+    "storyIds": ["story1", "story2"],
+    "traits": ["responsibility"]
+  },
+  {
+    "id": "gen-risk-def",
+    "text": "Risk awareness is noticing foreseeable danger and responding proportionally. Ignoring clear peril is a moral failure, not bravery.",
+    "source": "Trait glossary: risk awareness",
+    "storyIds": ["story1", "story2"],
+    "traits": ["riskAwareness"]
+  },
+  {
+    "id": "gen-arrogance-def",
+    "text": "Arrogance is inflated self-confidence that dismisses caution and others' concerns. High arrogance often predicts reckless or cruel choices.",
+    "source": "Trait glossary: arrogance",
+    "storyIds": ["story1", "story2"],
+    "traits": ["arrogance"]
+  },
+  {
+    "id": "gen-tradeoff",
+    "text": "Moral choices often trade short-term approval for long-term integrity. Raising wisdom or honesty may feel costly in the moment and still be the better path.",
+    "source": "Moral education note: tradeoffs",
+    "storyIds": ["story1", "story2"],
+    "traits": ["wisdom", "honesty", "humility"]
+  },
+  {
+    "id": "gen-impulse",
+    "text": "Impulsive agreement with exciting plans often lowers wisdom and risk awareness. A brief pause can change an entire trajectory.",
+    "source": "Moral education note: impulse control",
+    "storyIds": ["story1", "story2"],
+    "traits": ["wisdom", "riskAwareness", "arrogance"]
+  },
+  {
+    "id": "gen-repair",
+    "text": "After a harmful choice, repair means acknowledging impact, apologizing sincerely, and changing future behavior. Scores can recover when later choices show growth.",
+    "source": "Moral education note: moral repair",
+    "storyIds": ["story1", "story2"],
+    "traits": ["responsibility", "honesty", "humility"]
+  },
+  {
+    "id": "gen-projection",
+    "text": "Current moral scores are a projection, not destiny. Later choices can still shift toward prevention, redemption, kindness, or consequence depending on the path taken.",
+    "source": "Story design note: score projection",
+    "storyIds": ["story1", "story2"],
+    "traits": ["wisdom", "responsibility", "honesty"]
+  },
+  {
+    "id": "gen-explain-choice",
+    "text": "Each choice reveals priorities: safety vs glory, honesty vs cleverness, courage vs comfort. Explaining a choice means naming which values it strengthened or weakened.",
+    "source": "Moral education note: choice meaning",
+    "storyIds": ["story1", "story2"],
+    "traits": ["wisdom", "honesty", "empathy"]
+  },
+  {
+    "id": "gen-group-vs-self",
+    "text": "Moral tension often sits between belonging to a group and keeping personal integrity. Wise characters accept friction with peers to prevent greater harm.",
+    "source": "Moral education note: integrity vs belonging",
+    "storyIds": ["story1", "story2"],
+    "traits": ["wisdom", "duty", "humility"]
+  }
+]

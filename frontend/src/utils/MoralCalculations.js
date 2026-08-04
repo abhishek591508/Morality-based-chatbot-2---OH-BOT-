@@ -82,3 +82,58 @@ export const determineConditionalEnding = (scores) => {
   }
   return 'ending_death'; // Failed to convince them
 };
+
+/**
+ * Non-zero trait deltas for this choice, sorted by absolute impact.
+ */
+export const getScoreDeltas = (impact = {}) =>
+  Object.entries(impact)
+    .filter(([, delta]) => typeof delta === 'number' && delta !== 0)
+    .map(([trait, delta]) => ({ trait, delta }))
+    .sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta));
+
+/**
+ * Soft, rule-based ending lean from current scores (not a guarantee).
+ */
+export const projectEndingLean = (storyId, scores = {}) => {
+  const {
+    wisdom = 50,
+    empathy = 50,
+    responsibility = 50,
+    arrogance = 50,
+    riskAwareness = 50,
+    honesty = 50,
+    humility = 50
+  } = scores;
+
+  if (storyId === 'story1') {
+    if (wisdom >= 60 && (empathy >= 55 || responsibility >= 55)) {
+      return 'Leaning Prevention';
+    }
+    if (arrogance >= 60 || (wisdom < 45 && riskAwareness < 45)) {
+      return 'Leaning Tragic';
+    }
+    if (riskAwareness >= 55 || responsibility >= 55) {
+      return 'Leaning Survival';
+    }
+    return 'Leaning Tragic';
+  }
+
+  if (storyId === 'story2') {
+    if (honesty >= 65 && empathy >= 60 && arrogance < 55) {
+      return 'Leaning Kindness';
+    }
+    if (honesty >= 60 && responsibility >= 60 && humility >= 55) {
+      return 'Leaning Redemption';
+    }
+    if (arrogance >= 60 || (honesty < 45 && empathy < 45)) {
+      return 'Leaning Consequence';
+    }
+    if (honesty >= 55 && empathy >= 50) {
+      return 'Leaning Redemption';
+    }
+    return 'Leaning Consequence';
+  }
+
+  return 'Path still forming';
+};

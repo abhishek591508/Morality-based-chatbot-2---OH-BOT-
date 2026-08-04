@@ -1,0 +1,275 @@
+.projection-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.projection-card {
+  background-color: white;
+  border-radius: 16px;
+  padding: 32px 36px;
+  max-width: 820px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-height: 92vh;
+  overflow-y: auto;
+}
+
+.projection-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2c3e50;
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+.projection-choice {
+  text-align: center;
+  color: #34495e;
+  font-size: 16px;
+  margin: 0 0 28px;
+  line-height: 1.45;
+}
+
+.projection-label {
+  font-weight: 600;
+  color: #7f8c8d;
+}
+
+.projection-section {
+  margin-bottom: 24px;
+}
+
+.section-heading {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.delta-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.delta-column {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.delta-subtitle {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.delta-subtitle.up {
+  color: #27ae60;
+}
+
+.delta-subtitle.down {
+  color: #e67e22;
+}
+
+.delta-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.delta-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  color: #2c3e50;
+  padding: 4px 0;
+}
+
+.delta-value {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.delta-value.up {
+  color: #27ae60;
+}
+
+.delta-value.down {
+  color: #e67e22;
+}
+
+.delta-empty {
+  margin: 0;
+  font-size: 13px;
+  color: #95a5a6;
+}
+
+.projection-scores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.projection-score-item {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.projection-score-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 6px;
+}
+
+.projection-bar-track {
+  height: 6px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.projection-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.lean-section {
+  text-align: center;
+  background: #eef2ff;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.lean-badge {
+  display: inline-block;
+  margin: 0 0 8px;
+  padding: 8px 16px;
+  background: #667eea;
+  color: white;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.lean-note {
+  margin: 0;
+  font-size: 13px;
+  color: #5c6b7a;
+}
+
+.ai-section {
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  padding: 16px;
+  background: #fafbfc;
+}
+
+.ai-disclaimer {
+  margin: 0 0 14px;
+  font-size: 12px;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+.ai-block {
+  margin-bottom: 12px;
+}
+
+.ai-block h4 {
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: #667eea;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ai-block p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #2c3e50;
+}
+
+.ai-sources {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: #95a5a6;
+  line-height: 1.4;
+}
+
+.rag-loading {
+  padding: 8px 0;
+}
+
+.rag-skeleton {
+  height: 14px;
+  background: linear-gradient(90deg, #e9ecef 25%, #f8f9fa 50%, #e9ecef 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.rag-skeleton.short {
+  width: 70%;
+}
+
+.rag-loading-text {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #95a5a6;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.projection-continue-btn {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.projection-continue-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .projection-card {
+    padding: 24px 18px;
+  }
+
+  .delta-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .projection-title {
+    font-size: 22px;
+  }
+}

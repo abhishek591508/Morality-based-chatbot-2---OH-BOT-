@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/database.js';
 import gameRoutes from './routes/gameRoutes.js';
+import ragRoutes from './routes/ragRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/games', gameRoutes);
+app.use('/api/rag', ragRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {
@@ -46,6 +48,7 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📍 API URL: http://localhost:${PORT}/api`);
   console.log(`📊 Excel Export: http://localhost:${PORT}/api/games/export/excel`);
+  console.log(`🧠 RAG Feedback: http://localhost:${PORT}/api/rag/choice-feedback`);
 });
 
 
