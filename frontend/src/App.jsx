@@ -4,7 +4,6 @@ import UsernameInput from './components/UsernameInput';
 import StorySelection from './components/StorySelection';
 import GameScreen from './components/GameScreen';
 import ResultsScreen from './components/ResultsScreen';
-import ChoiceProjection from './components/ChoiceProjection';
 import { STORY_DATA } from './data/storyData';
 import { 
   getInitialScores, 
@@ -19,7 +18,7 @@ import { fetchChoiceFeedback } from './utils/rag';
 import './App.css';
 
 function App() {
-  // Game state: welcome, username, storySelect, playing, projecting, results
+  // Game state: welcome, username, storySelect, playing, results
   const [gameState, setGameState] = useState('welcome');
   const [username, setUsername] = useState('');
   const [selectedStory, setSelectedStory] = useState('story1');
@@ -28,15 +27,17 @@ function App() {
   const [decisionHistory, setDecisionHistory] = useState([]);
   const [sceneNumber, setSceneNumber] = useState(1);
 
-  // Post-choice projection state
+  // Post-choice projection (shown beside the same game screen)
   const [projection, setProjection] = useState(null);
+  const [selectedChoiceId, setSelectedChoiceId] = useState(null);
   const [ragLoading, setRagLoading] = useState(false);
   const [ragFeedback, setRagFeedback] = useState(null);
   const ragRequestIdRef = useRef(0);
 
   const clearProjection = () => {
-    ragRequestIdRef.current += 1; // invalidate in-flight RAG
+    ragRequestIdRef.current += 1;
     setProjection(null);
+    setSelectedChoiceId(null);
     setRagLoading(false);
     setRagFeedback(null);
   };
@@ -62,9 +63,9 @@ function App() {
     setGameState('playing');
   };
 
-  // Pause on projection before advancing the scene
+  // Keep the same scene visible; show projection on the right
   const handleChoiceSelect = async (choice) => {
-    setSceneNumber((prev) => prev + 1);
+    if (projection) return;
 
     const newScores = updateMoralScores(moralScores, choice.moralImpact);
     setMoralScores(newScores);
@@ -88,6 +89,7 @@ function App() {
     const scoreDeltas = getScoreDeltas(choice.moralImpact);
     const endingLean = projectEndingLean(selectedStory, newScores);
 
+    setSelectedChoiceId(choice.id);
     setProjection({
       choiceText: choice.text,
       choicePreview: choice.preview,
@@ -103,7 +105,6 @@ function App() {
     });
     setRagFeedback(null);
     setRagLoading(true);
-    setGameState('projecting');
 
     const requestId = ++ragRequestIdRef.current;
     const feedback = await fetchChoiceFeedback({
@@ -118,7 +119,6 @@ function App() {
       endingLean
     });
 
-    // Ignore stale responses if user already continued
     if (requestId !== ragRequestIdRef.current) return;
 
     if (feedback) {
@@ -143,6 +143,7 @@ function App() {
 
     const { nextScene, nextSceneData, newScores, newHistory } = projection.pending;
     setCurrentScene(nextScene);
+    setSceneNumber((prev) => prev + 1);
     clearProjection();
 
     if (nextSceneData?.isEnding) {
@@ -156,8 +157,6 @@ function App() {
         endingType: nextSceneData.endingType,
         timestamp: new Date().toISOString()
       });
-    } else {
-      setGameState('playing');
     }
   };
 
@@ -206,18 +205,11 @@ function App() {
           storyTitle={currentStoryData.title}
           onChoiceSelect={handleChoiceSelect}
           sceneNumber={sceneNumber}
-        />
-      )}
-
-      {gameState === 'projecting' && projection && (
-        <ChoiceProjection
-          choiceText={projection.choiceText}
-          scoreDeltas={projection.scoreDeltas}
-          moralScores={projection.moralScores}
-          endingLean={projection.endingLean}
+          projection={projection}
+          selectedChoiceId={selectedChoiceId}
           ragLoading={ragLoading}
           ragFeedback={ragFeedback}
-          onContinue={handleProjectionContinue}
+          onProjectionContinue={handleProjectionContinue}
         />
       )}
       

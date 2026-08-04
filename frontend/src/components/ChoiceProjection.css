@@ -6,6 +6,16 @@
   padding: 20px;
 }
 
+.projection-panel {
+  flex: 1;
+  min-width: 0;
+  max-width: 400px;
+  height: 100%;
+  max-height: calc(100vh - 24px);
+  display: flex;
+  animation: projectionPanelIn 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .projection-card {
   background-color: white;
   border-radius: 16px;
@@ -17,12 +27,92 @@
   overflow-y: auto;
 }
 
+.projection-card-embedded {
+  max-width: none;
+  max-height: calc(100vh - 24px);
+  padding: 14px 16px;
+  animation: projectionCardIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+}
+
+.projection-card-embedded .projection-section {
+  margin-bottom: 12px;
+}
+
+.projection-card-embedded .lean-section {
+  padding: 10px;
+}
+
+.projection-card-embedded .ai-section {
+  padding: 10px;
+}
+
+.projection-card-embedded .projection-continue-btn {
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+@keyframes projectionPanelIn {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes projectionCardIn {
+  from {
+    opacity: 0;
+    transform: translateX(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projection-panel,
+  .projection-card-embedded,
+  .choice-button-selected,
+  .choice-button-dimmed,
+  .game-card-left {
+    animation: none !important;
+  }
+}
+
 .projection-title {
   font-size: 28px;
   font-weight: bold;
   color: #2c3e50;
   text-align: center;
   margin: 0 0 12px;
+}
+
+.projection-card-embedded .projection-title {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.projection-card-embedded .projection-choice {
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.projection-card-embedded .section-heading {
+  font-size: 12px;
+}
+
+.projection-card-embedded .projection-scores-grid {
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.projection-card-embedded .delta-columns {
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 
 .projection-choice {

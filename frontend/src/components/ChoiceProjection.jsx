@@ -14,7 +14,8 @@ const ChoiceProjection = ({
   endingLean,
   ragLoading,
   ragFeedback,
-  onContinue
+  onContinue,
+  embedded = false
 }) => {
   const increased = scoreDeltas.filter((d) => d.delta > 0);
   const decreased = scoreDeltas.filter((d) => d.delta < 0);
@@ -29,8 +30,8 @@ const ChoiceProjection = ({
       : 'Your later choices will continue to shape how this story may end.');
 
   return (
-    <div className="projection-container">
-      <div className="projection-card">
+    <div className={embedded ? 'projection-panel' : 'projection-container'}>
+      <div className={`projection-card ${embedded ? 'projection-card-embedded' : ''}`}>
         <h2 className="projection-title">Choice Projection</h2>
         <p className="projection-choice">
           <span className="projection-label">Your choice:</span> {choiceText}
