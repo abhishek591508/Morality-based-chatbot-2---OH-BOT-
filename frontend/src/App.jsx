@@ -30,9 +30,21 @@ function App() {
   // Post-choice projection (shown beside the same game screen)
   const [projection, setProjection] = useState(null);
   const [selectedChoiceId, setSelectedChoiceId] = useState(null);
+  const [ragEnabled, setRagEnabled] = useState(false);
   const [ragLoading, setRagLoading] = useState(false);
   const [ragFeedback, setRagFeedback] = useState(null);
   const ragRequestIdRef = useRef(0);
+
+  const buildLocalFeedback = (choicePreview, endingLean) => ({
+    choiceLine:
+      choicePreview ||
+      'This choice updates your moral scores based on the values it emphasizes.',
+    endingForecast: endingLean
+      ? `Based on your current scores, you appear ${endingLean.toLowerCase()}. Later choices can still change this.`
+      : 'Your later choices will continue to shape how this story may end.',
+    sources: [],
+    usedFallback: true
+  });
 
   const clearProjection = () => {
     ragRequestIdRef.current += 1;
@@ -40,6 +52,35 @@ function App() {
     setSelectedChoiceId(null);
     setRagLoading(false);
     setRagFeedback(null);
+  };
+
+  const requestRagFeedback = async ({
+    choiceText,
+    choicePreview,
+    moralImpact,
+    updatedScores,
+    endingLean,
+    sceneId
+  }) => {
+    setRagLoading(true);
+    const requestId = ++ragRequestIdRef.current;
+
+    const feedback = await fetchChoiceFeedback({
+      username,
+      storyId: selectedStory,
+      storyTitle: STORY_DATA[selectedStory].title,
+      sceneId,
+      choiceText,
+      choicePreview,
+      moralImpact,
+      updatedScores,
+      endingLean
+    });
+
+    if (requestId !== ragRequestIdRef.current) return;
+
+    setRagFeedback(feedback || buildLocalFeedback(choicePreview, endingLean));
+    setRagLoading(false);
   };
 
   const handleStart = () => {
@@ -93,6 +134,8 @@ function App() {
     setProjection({
       choiceText: choice.text,
       choicePreview: choice.preview,
+      moralImpact: choice.moralImpact,
+      sceneId: currentScene,
       scoreDeltas,
       moralScores: newScores,
       endingLean,
@@ -103,39 +146,44 @@ function App() {
         newHistory
       }
     });
-    setRagFeedback(null);
-    setRagLoading(true);
 
-    const requestId = ++ragRequestIdRef.current;
-    const feedback = await fetchChoiceFeedback({
-      username,
-      storyId: selectedStory,
-      storyTitle: STORY_DATA[selectedStory].title,
-      sceneId: currentScene,
-      choiceText: choice.text,
-      choicePreview: choice.preview,
-      moralImpact: choice.moralImpact,
-      updatedScores: newScores,
-      endingLean
-    });
+    // Always show local preview first; fetch RAG only when enabled
+    setRagFeedback(buildLocalFeedback(choice.preview, endingLean));
+    setRagLoading(false);
 
-    if (requestId !== ragRequestIdRef.current) return;
-
-    if (feedback) {
-      setRagFeedback(feedback);
-    } else {
-      setRagFeedback({
-        choiceLine:
-          choice.preview ||
-          'This choice updates your moral scores based on the values it emphasizes.',
-        endingForecast: endingLean
-          ? `Based on your current scores, you appear ${endingLean.toLowerCase()}. Later choices can still change this.`
-          : 'Your later choices will continue to shape how this story may end.',
-        sources: [],
-        usedFallback: true
+    if (ragEnabled) {
+      await requestRagFeedback({
+        choiceText: choice.text,
+        choicePreview: choice.preview,
+        moralImpact: choice.moralImpact,
+        updatedScores: newScores,
+        endingLean,
+        sceneId: currentScene
       });
     }
-    setRagLoading(false);
+  };
+
+  const handleRagToggle = async (enabled) => {
+    setRagEnabled(enabled);
+    if (!projection) return;
+
+    if (!enabled) {
+      ragRequestIdRef.current += 1;
+      setRagLoading(false);
+      setRagFeedback(
+        buildLocalFeedback(projection.choicePreview, projection.endingLean)
+      );
+      return;
+    }
+
+    await requestRagFeedback({
+      choiceText: projection.choiceText,
+      choicePreview: projection.choicePreview,
+      moralImpact: projection.moralImpact,
+      updatedScores: projection.moralScores,
+      endingLean: projection.endingLean,
+      sceneId: projection.sceneId
+    });
   };
 
   const handleProjectionContinue = async () => {
@@ -207,8 +255,10 @@ function App() {
           sceneNumber={sceneNumber}
           projection={projection}
           selectedChoiceId={selectedChoiceId}
+          ragEnabled={ragEnabled}
           ragLoading={ragLoading}
           ragFeedback={ragFeedback}
+          onRagToggle={handleRagToggle}
           onProjectionContinue={handleProjectionContinue}
         />
       )}

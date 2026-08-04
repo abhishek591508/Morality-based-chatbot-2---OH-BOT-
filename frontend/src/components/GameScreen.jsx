@@ -11,8 +11,10 @@ const GameScreen = ({
   sceneNumber,
   projection = null,
   selectedChoiceId = null,
+  ragEnabled = false,
   ragLoading = false,
   ragFeedback = null,
+  onRagToggle,
   onProjectionContinue
 }) => {
   const showProjection = Boolean(projection);
@@ -57,8 +59,10 @@ const GameScreen = ({
           scoreDeltas={projection.scoreDeltas}
           moralScores={projection.moralScores}
           endingLean={projection.endingLean}
+          ragEnabled={ragEnabled}
           ragLoading={ragLoading}
           ragFeedback={ragFeedback}
+          onRagToggle={onRagToggle}
           onContinue={onProjectionContinue}
         />
       )}

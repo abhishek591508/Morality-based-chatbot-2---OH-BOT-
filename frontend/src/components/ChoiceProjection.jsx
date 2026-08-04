@@ -12,13 +12,18 @@ const ChoiceProjection = ({
   scoreDeltas,
   moralScores,
   endingLean,
+  ragEnabled = false,
   ragLoading,
   ragFeedback,
+  onRagToggle,
   onContinue,
   embedded = false
 }) => {
   const increased = scoreDeltas.filter((d) => d.delta > 0);
   const decreased = scoreDeltas.filter((d) => d.delta < 0);
+
+  const isRagLive = ragEnabled && ragFeedback && !ragFeedback.usedFallback && !ragLoading;
+  const isFallback = !ragEnabled || ragFeedback?.usedFallback || !ragFeedback;
 
   const choiceLine =
     ragFeedback?.choiceLine ||
@@ -28,6 +33,14 @@ const ChoiceProjection = ({
     (endingLean
       ? `Based on your current scores, you appear ${endingLean.toLowerCase()}. Later choices can still change this.`
       : 'Your later choices will continue to shape how this story may end.');
+
+  const sourceLabel = !ragEnabled
+    ? 'Local preview'
+    : ragLoading
+      ? 'Fetching RAG…'
+      : isRagLive
+        ? 'RAG + Llama'
+        : 'Fallback (not RAG)';
 
   return (
     <div className={embedded ? 'projection-panel' : 'projection-container'}>
@@ -102,17 +115,43 @@ const ChoiceProjection = ({
           <p className="lean-note">Rule-based from your current scores — not a final result.</p>
         </section>
 
-        <section className="projection-section ai-section">
-          <h3 className="section-heading">AI insight (grounded)</h3>
+        <section
+          className={`projection-section ai-section ${
+            isRagLive ? 'ai-section-rag' : 'ai-section-fallback'
+          }`}
+        >
+          <div className="ai-section-header">
+            <h3 className="section-heading">AI insight</h3>
+            <label className="rag-toggle" title="Turn RAG explanations on or off">
+              <span className="rag-toggle-label">RAG</span>
+              <input
+                type="checkbox"
+                checked={ragEnabled}
+                onChange={(e) => onRagToggle?.(e.target.checked)}
+              />
+              <span className="rag-toggle-slider" />
+            </label>
+          </div>
+
+          <div
+            className={`source-badge ${
+              isRagLive ? 'source-badge-rag' : 'source-badge-fallback'
+            }`}
+          >
+            {sourceLabel}
+          </div>
+
           <p className="ai-disclaimer">
-            AI foreshadowing — not your final result. Generative text does not change scores or the story path.
+            {ragEnabled
+              ? 'AI foreshadowing — not your final result. Does not change scores or story path.'
+              : 'RAG is off. Showing local choice preview only. Turn RAG on for grounded Llama insight.'}
           </p>
 
-          {ragLoading ? (
+          {ragEnabled && ragLoading ? (
             <div className="rag-loading">
               <div className="rag-skeleton" />
               <div className="rag-skeleton short" />
-              <p className="rag-loading-text">Retrieving moral context…</p>
+              <p className="rag-loading-text">Retrieving moral context via RAG…</p>
             </div>
           ) : (
             <>
@@ -124,10 +163,15 @@ const ChoiceProjection = ({
                 <h4>Possible trajectory</h4>
                 <p>{endingForecast}</p>
               </div>
-              {ragFeedback?.sources?.length > 0 && (
+              {isRagLive && ragFeedback?.sources?.length > 0 && (
                 <p className="ai-sources">
-                  Sources:{' '}
+                  Retrieved sources:{' '}
                   {ragFeedback.sources.map((s) => s.source).join(' · ')}
+                </p>
+              )}
+              {isFallback && ragEnabled && !ragLoading && (
+                <p className="ai-sources">
+                  Placeholder text used because RAG/Groq was unavailable.
                 </p>
               )}
             </>
